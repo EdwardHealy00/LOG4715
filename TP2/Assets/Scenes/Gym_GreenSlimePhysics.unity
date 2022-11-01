@@ -474,7 +474,9 @@ PrefabInstance:
       propertyPath: m_Name
       value: Young Thug
       objectReference: {fileID: 0}
-    m_RemovedComponents: []
+    m_RemovedComponents:
+    - {fileID: 1131595419, guid: 938b14cba38e78e4382eebf762ae5d8e, type: 3}
+    - {fileID: 1131595418, guid: 938b14cba38e78e4382eebf762ae5d8e, type: 3}
   m_SourcePrefab: {fileID: 100100000, guid: 938b14cba38e78e4382eebf762ae5d8e, type: 3}
 --- !u!1 &2079261298 stripped
 GameObject:
@@ -482,23 +484,6 @@ GameObject:
     type: 3}
   m_PrefabInstance: {fileID: 1896062766}
   m_PrefabAsset: {fileID: 0}
---- !u!114 &2079261304
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 2079261298}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 3105ba9e0e5f92c418138c60dc647197, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  MoveSpeed: 5
-  JumpForce: 10
-  WhatIsGround:
-    serializedVersion: 2
-    m_Bits: 2147483647
 --- !u!54 &2079261305
 Rigidbody:
   m_ObjectHideFlags: 0
