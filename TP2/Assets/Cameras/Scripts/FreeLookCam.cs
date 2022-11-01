@@ -1,6 +1,6 @@
 using System;
 using UnityEngine;
-
+using UnityStandardAssets;
 
 namespace UnityStandardAssets.Cameras
 {

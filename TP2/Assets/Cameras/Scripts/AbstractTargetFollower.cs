@@ -1,6 +1,8 @@
 using System;
 using UnityEngine;
+using UnityStandardAssets;
 
+#pragma warning disable 649
 namespace UnityStandardAssets.Cameras
 {
     public abstract class AbstractTargetFollower : MonoBehaviour
