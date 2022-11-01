@@ -37,7 +37,6 @@ public class PlayerControler : MonoBehaviour
     {
         var horizontal = Input.GetAxis("Horizontal") * MoveSpeed;
         HorizontalMove(horizontal);
-        FlipCharacter(horizontal);
         CheckJump();
     }
 
