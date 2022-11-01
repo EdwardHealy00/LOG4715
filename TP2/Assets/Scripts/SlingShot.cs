@@ -47,7 +47,7 @@ public class SlingShot : MonoBehaviour
                         if (raycastHit.transform == transform)
                         {
                             m_SlingshotState = SlingshotState.UserPulling;
-                            Debug.Log("pulling");
+                            Debug.Log("Grabbed");
                         }
                     }
                 }
@@ -58,25 +58,26 @@ public class SlingShot : MonoBehaviour
                 {
                     var location = Camera.main.ScreenToWorldPoint(new Vector3(Input.mousePosition.x, Input.mousePosition.y, Camera.main.transform.position.z)) * -1;
                     location.z = 0;
-                    location.y += Camera.main.transform.position.y;
-
-                    if (Vector3.Distance(location, transform.position) > k_MaxPullDistance)
+                    location.y -= Camera.main.transform.position.y + 2f;
+                    location.x *= -1;
+                    
+                    if (Vector3.Distance(location, -transform.position) > k_MaxPullDistance)
                     {
-                        var maxPosition = (location - transform.position).normalized * k_MaxPullDistance + transform.position;
+                        var maxPosition = (transform.position - location).normalized * k_MaxPullDistance + transform.position;
                         m_LastLocation = maxPosition;
                     }
                     else
                     {
                         m_LastLocation = location;
                     }
-                    float distance = Vector3.Distance(transform.position, m_LastLocation);
-                    Debug.Log($"d:{distance}, l:{m_LastLocation}");
+                    float distance = Vector3.Distance(m_LastLocation, transform.position);
+                    Debug.Log($"Pull distance:{distance}, loc:{location}, transform:{transform.position}");
                     //DisplayTrajectoryLineRenderer2(distance);
                 }
                 else
                 {
                     //SetTrajectoryLineRenderesActive(false);
-                    float distance = Vector3.Distance(transform.position, m_LastLocation);
+                    float distance = Vector3.Distance(m_LastLocation, transform.position);
                     Debug.Log(distance);
                     if (distance > 1)
                     {
@@ -101,7 +102,8 @@ public class SlingShot : MonoBehaviour
         //get velocity
         Vector3 velocity = m_LastLocation - transform.position;
         velocity.Normalize();
-        
+        velocity.y *= -1;
+
         Debug.Log(-velocity * m_ThrowSpeed * distance);
         //set the velocity
         GetComponent<Rigidbody>().AddForce(-velocity * m_ThrowSpeed * distance, ForceMode.Impulse);
