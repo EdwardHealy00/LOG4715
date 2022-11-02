@@ -16,9 +16,11 @@ public class SlingShot : MonoBehaviour
     public float m_ThrowSpeed;
     public float m_MaxPullDistance;
 
+    private Rigidbody m_Rigidbody;
     void Start()
     {
         m_SlingshotState = SlingshotState.Idle;
+        m_Rigidbody = GetComponent<Rigidbody>();
     }
 
     void Update()
@@ -53,7 +55,7 @@ public class SlingShot : MonoBehaviour
                 }
                 else
                 {
-                    GetComponent<Rigidbody>().AddForce(m_PullDistance * m_ThrowSpeed, ForceMode.Impulse);
+                    m_Rigidbody.AddForce(m_PullDistance * m_ThrowSpeed, ForceMode.Impulse);
                     m_SlingshotState = SlingshotState.Idle;
                 }
                 break;
