@@ -15,6 +15,7 @@ public class SlingShot : MonoBehaviour
 
     public float m_ThrowSpeed;
     public float m_MaxPullDistance;
+    public float m_PullDistanceDivider;
 
     void Start()
     {
@@ -45,6 +46,7 @@ public class SlingShot : MonoBehaviour
                 if (Input.GetMouseButton(0))
                 {
                     m_PullDistance = m_StartPullPos - Input.mousePosition;
+                    m_PullDistance /= m_PullDistanceDivider;
 
                     if (m_PullDistance.magnitude > m_MaxPullDistance)
                     {
