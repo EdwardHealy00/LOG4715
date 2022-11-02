@@ -12,6 +12,7 @@ public class SlingShot : MonoBehaviour
     private SlingshotState m_SlingshotState;
     private Vector3 m_StartPullPos;
     private Vector3 m_PullDistance;
+    private SlimeManager m_SlimeManager;
 
     public float m_ThrowSpeed;
     public float m_MaxPullDistance;
@@ -21,6 +22,7 @@ public class SlingShot : MonoBehaviour
     {
         m_SlingshotState = SlingshotState.Idle;
         m_Rigidbody = GetComponent<Rigidbody>();
+        m_SlimeManager = GetComponent<SlimeManager>();
     }
 
     void Update()
@@ -28,7 +30,7 @@ public class SlingShot : MonoBehaviour
         switch (m_SlingshotState)
         {
             case SlingshotState.Idle:
-                if (Input.GetMouseButtonDown(0))
+                if (Input.GetMouseButtonDown(0) && m_SlimeManager.Grounded)
                 {
                     Ray ray = Camera.main.ScreenPointToRay(Input.mousePosition);
                     RaycastHit raycastHit;
