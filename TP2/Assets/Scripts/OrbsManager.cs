@@ -22,9 +22,7 @@ public class OrbsManager : MonoBehaviour
         m_StartFixedDeltaTime = Time.fixedDeltaTime;
         
         m_OrbPanel = GameObject.Find("Canvas").transform.Find("OrbPanel").gameObject;
-        m_OrbPanel.SetActive(true);
         m_BlurMaterial = m_OrbPanel.GetComponent<Image>().material;
-        m_OrbPanel.SetActive(false);
         m_BlurIntensityID = Shader.PropertyToID("_Size");
     }
 
