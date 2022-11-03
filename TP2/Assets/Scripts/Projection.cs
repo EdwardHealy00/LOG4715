@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 
+//Inspired by: https://github.com/Matthew-J-Spencer/Trajectory-Line-Unity 
 public class Projection : MonoBehaviour
 {
     private LineRenderer m_line;
