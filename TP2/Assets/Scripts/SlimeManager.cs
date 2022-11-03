@@ -1,29 +1,27 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
+
 
 public class SlimeManager : MonoBehaviour
 {
     [SerializeField] private LayerMask m_WhatIsGround;
-    private Rigidbody m_Rigidbody;
-    const float k_GroundedRadius = .3f;
+    private const float k_Epsilon = 1f;
 
     public bool Grounded { get; set; }
-    // Start is called before the first frame update
+    public Transform BodyCenter { get; set; }
+    public Rigidbody Rigidbody { get; set; }
+
     void Awake()
     {
-        m_Rigidbody = GetComponent<Rigidbody>();
-        //m_Rigidbody.centerOfMass = new Vector3(0, -.25f, 0);
+        Rigidbody = GetComponent<Rigidbody>();
+        BodyCenter = transform.Find("BodyCenter");
     }
-
-    private void FixedUpdate()
+    void OnCollisionStay(Collision collisionInfo)
     {
         Grounded = false;
-        Collider[] colliders = Physics.OverlapSphere(transform.position, k_GroundedRadius, m_WhatIsGround);
-        for (int i = 0; i < colliders.Length; i++)
+        if (Rigidbody.velocity.magnitude < k_Epsilon && m_WhatIsGround == (m_WhatIsGround | (1 << collisionInfo.gameObject.layer)))
         {
-            if (colliders[i].gameObject != gameObject)
-                Grounded = true;
+            Grounded = true; 
         }
+        Debug.Log(Grounded);
     }
 }
