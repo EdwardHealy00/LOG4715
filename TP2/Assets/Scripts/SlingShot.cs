@@ -1,15 +1,8 @@
 using UnityEngine;
 using System.Collections;
 using System;
-
-public enum SlingshotState
-{
-    Idle,
-    UserPulling
-}
 public class SlingShot : MonoBehaviour
 {
-    private SlingshotState m_SlingshotState;
     private Vector3 m_StartPullPos;
     private Vector3 m_PullDistance;
     private SlimeManager m_SlimeManager;
@@ -21,15 +14,17 @@ public class SlingShot : MonoBehaviour
     [SerializeField] private GameObject _ballPrefab;
     void Start()
     {
-        m_SlingshotState = SlingshotState.Idle;
         m_SlimeManager = GetComponent<SlimeManager>();
+        m_SlimeManager.SlingshotState = SlingshotState.Idle;
         m_Projection = GetComponent<Projection>();
     }
 
     void Update()
     {
-        switch (m_SlingshotState)
+        //Debug.Log(m_SlimeManager.Grounded);
+        switch (m_SlimeManager.SlingshotState)
         {
+            
             case SlingshotState.Idle:
                 if (Input.GetMouseButtonDown(0) && m_SlimeManager.Grounded)
                 {
@@ -40,7 +35,7 @@ public class SlingShot : MonoBehaviour
                         if (raycastHit.transform == transform)
                         {
                             m_StartPullPos = Input.mousePosition;
-                            m_SlingshotState = SlingshotState.UserPulling;
+                            m_SlimeManager.SlingshotState = SlingshotState.UserPulling;
                         }
                     }
                     m_Projection.EnableTrajectory(true);
@@ -62,8 +57,11 @@ public class SlingShot : MonoBehaviour
                 }
                 else
                 {
+                    Debug.Log("released");
+
+                    m_SlimeManager.SlingshotState = SlingshotState.Moving;
+                    m_SlimeManager.Rigidbody.isKinematic = false;
                     m_SlimeManager.Rigidbody.AddForce(m_PullDistance * m_ThrowSpeed, ForceMode.Impulse);
-                    m_SlingshotState = SlingshotState.Idle;
                     m_Projection.EnableTrajectory(false);
                 }
                 break;
@@ -73,4 +71,6 @@ public class SlingShot : MonoBehaviour
         }
 
     }
+
+    
 }

@@ -47,7 +47,7 @@ public class Projection : MonoBehaviour
     {
         var ghostObj = Instantiate(ballPrefab, pos, Quaternion.identity);
         SceneManager.MoveGameObjectToScene(ghostObj.gameObject, _simulationScene);
-
+       
         ghostObj.GetComponent<Rigidbody>().AddForce(velocity, ForceMode.Impulse);
 
         m_line.positionCount = m_MaxPhysicsFrameIterations;
