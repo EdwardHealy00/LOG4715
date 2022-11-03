@@ -13,7 +13,7 @@ public class SlimeManager : MonoBehaviour
     void Awake()
     {
         m_Rigidbody = GetComponent<Rigidbody>();
-        m_Rigidbody.centerOfMass = new Vector3(0, -.25f, 0);
+        //m_Rigidbody.centerOfMass = new Vector3(0, -.25f, 0);
     }
 
     private void FixedUpdate()
