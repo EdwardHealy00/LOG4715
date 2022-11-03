@@ -314,6 +314,16 @@ PrefabInstance:
       value: 
       objectReference: {fileID: 2389161829925248245, guid: 950fe431d15339a438bc17667df227e6,
         type: 3}
+    - target: {fileID: 3660836786159845079, guid: 938b14cba38e78e4382eebf762ae5d8e,
+        type: 3}
+      propertyPath: m_MaxPullDistance
+      value: 3
+      objectReference: {fileID: 0}
+    - target: {fileID: 3660836786159845079, guid: 938b14cba38e78e4382eebf762ae5d8e,
+        type: 3}
+      propertyPath: m_PullDistanceDivider
+      value: 9
+      objectReference: {fileID: 0}
     - target: {fileID: 7405666344198245619, guid: 938b14cba38e78e4382eebf762ae5d8e,
         type: 3}
       propertyPath: m_Name

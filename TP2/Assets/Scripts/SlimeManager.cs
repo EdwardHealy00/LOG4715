@@ -15,7 +15,7 @@ public class SlimeManager : MonoBehaviour
 
     public SlingshotState SlingshotState { get; set; }
 
-    private const float k_NonStickRadius = .3f;
+    private const float k_NonStickRadius = .5f;
     private Vector3 m_LastCollisionPoint;
 
 
@@ -46,13 +46,11 @@ public class SlimeManager : MonoBehaviour
     
     void OnCollisionEnter(Collision collisionInfo)
     {
-        Debug.Log($"last pos:{m_LastCollisionPoint}, cur pos {transform.position}, mag: {(m_LastCollisionPoint - transform.position).magnitude}");
         switch (Color)
         {
             case SlimeColor.Yellow:
                 if (SlingshotState == SlingshotState.Moving && (m_LastCollisionPoint - transform.position).magnitude > k_NonStickRadius)
                 {
-                    Debug.Log("sticked");
                     m_LastCollisionPoint = transform.position;
                     SlingshotState = SlingshotState.Idle;
                     Rigidbody.velocity = Vector3.zero;
