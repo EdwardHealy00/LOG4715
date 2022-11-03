@@ -13,17 +13,17 @@ public class SlingShot : MonoBehaviour
     private Vector3 m_StartPullPos;
     private Vector3 m_PullDistance;
     private SlimeManager m_SlimeManager;
+    private Projection m_Projection;
+    [SerializeField] private float m_ThrowSpeed;
+    [SerializeField] private float m_MaxPullDistance;
+    [SerializeField] private float m_PullDistanceDivider;
 
-    public float m_ThrowSpeed;
-    public float m_MaxPullDistance;
-    public float m_PullDistanceDivider;
-
-    private Rigidbody m_Rigidbody;
+    [SerializeField] private GameObject _ballPrefab;
     void Start()
     {
         m_SlingshotState = SlingshotState.Idle;
-        m_Rigidbody = GetComponent<Rigidbody>();
         m_SlimeManager = GetComponent<SlimeManager>();
+        m_Projection = GetComponent<Projection>();
     }
 
     void Update()
@@ -43,6 +43,7 @@ public class SlingShot : MonoBehaviour
                             m_SlingshotState = SlingshotState.UserPulling;
                         }
                     }
+                    m_Projection.EnableTrajectory(true);
                 }
                 break;
 
@@ -56,11 +57,14 @@ public class SlingShot : MonoBehaviour
                     {
                         m_PullDistance = m_PullDistance.normalized * m_MaxPullDistance;
                     }
+
+                    m_Projection.SimulateTrajectory(_ballPrefab, m_SlimeManager.BodyCenter.position, m_PullDistance * m_ThrowSpeed);
                 }
                 else
                 {
-                    m_Rigidbody.AddForce(m_PullDistance * m_ThrowSpeed, ForceMode.Impulse);
+                    m_SlimeManager.Rigidbody.AddForce(m_PullDistance * m_ThrowSpeed, ForceMode.Impulse);
                     m_SlingshotState = SlingshotState.Idle;
+                    m_Projection.EnableTrajectory(false);
                 }
                 break;
 
