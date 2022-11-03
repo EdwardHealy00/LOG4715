@@ -123,6 +123,80 @@ NavMeshSettings:
     debug:
       m_Flags: 0
   m_NavMeshData: {fileID: 0}
+--- !u!1001 &299696695
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    m_TransformParent: {fileID: 0}
+    m_Modifications:
+    - target: {fileID: 1034187739499194775, guid: 938b14cba38e78e4382eebf762ae5d8e,
+        type: 3}
+      propertyPath: _obstaclesParent
+      value: 
+      objectReference: {fileID: 1049181000}
+    - target: {fileID: 1630000045372067231, guid: 938b14cba38e78e4382eebf762ae5d8e,
+        type: 3}
+      propertyPath: m_RootOrder
+      value: 3
+      objectReference: {fileID: 0}
+    - target: {fileID: 1630000045372067231, guid: 938b14cba38e78e4382eebf762ae5d8e,
+        type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1630000045372067231, guid: 938b14cba38e78e4382eebf762ae5d8e,
+        type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1630000045372067231, guid: 938b14cba38e78e4382eebf762ae5d8e,
+        type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1630000045372067231, guid: 938b14cba38e78e4382eebf762ae5d8e,
+        type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 0.7071068
+      objectReference: {fileID: 0}
+    - target: {fileID: 1630000045372067231, guid: 938b14cba38e78e4382eebf762ae5d8e,
+        type: 3}
+      propertyPath: m_LocalRotation.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1630000045372067231, guid: 938b14cba38e78e4382eebf762ae5d8e,
+        type: 3}
+      propertyPath: m_LocalRotation.y
+      value: 0.7071068
+      objectReference: {fileID: 0}
+    - target: {fileID: 1630000045372067231, guid: 938b14cba38e78e4382eebf762ae5d8e,
+        type: 3}
+      propertyPath: m_LocalRotation.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1630000045372067231, guid: 938b14cba38e78e4382eebf762ae5d8e,
+        type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1630000045372067231, guid: 938b14cba38e78e4382eebf762ae5d8e,
+        type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 90
+      objectReference: {fileID: 0}
+    - target: {fileID: 1630000045372067231, guid: 938b14cba38e78e4382eebf762ae5d8e,
+        type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7405666344198245619, guid: 938b14cba38e78e4382eebf762ae5d8e,
+        type: 3}
+      propertyPath: m_Name
+      value: Young Thug
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+  m_SourcePrefab: {fileID: 100100000, guid: 938b14cba38e78e4382eebf762ae5d8e, type: 3}
 --- !u!1 &529049885
 GameObject:
   m_ObjectHideFlags: 0
@@ -568,77 +642,3 @@ MonoBehaviour:
   m_SpinTurnLimit: 90
   m_TargetVelocityLowerLimit: 0
   m_SmoothTurnTime: 0
---- !u!1001 &1837074321
-PrefabInstance:
-  m_ObjectHideFlags: 0
-  serializedVersion: 2
-  m_Modification:
-    m_TransformParent: {fileID: 0}
-    m_Modifications:
-    - target: {fileID: 1034187739499194775, guid: 938b14cba38e78e4382eebf762ae5d8e,
-        type: 3}
-      propertyPath: _obstaclesParent
-      value: 
-      objectReference: {fileID: 1049181000}
-    - target: {fileID: 1630000045372067231, guid: 938b14cba38e78e4382eebf762ae5d8e,
-        type: 3}
-      propertyPath: m_RootOrder
-      value: 3
-      objectReference: {fileID: 0}
-    - target: {fileID: 1630000045372067231, guid: 938b14cba38e78e4382eebf762ae5d8e,
-        type: 3}
-      propertyPath: m_LocalPosition.x
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 1630000045372067231, guid: 938b14cba38e78e4382eebf762ae5d8e,
-        type: 3}
-      propertyPath: m_LocalPosition.y
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 1630000045372067231, guid: 938b14cba38e78e4382eebf762ae5d8e,
-        type: 3}
-      propertyPath: m_LocalPosition.z
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 1630000045372067231, guid: 938b14cba38e78e4382eebf762ae5d8e,
-        type: 3}
-      propertyPath: m_LocalRotation.w
-      value: 0.7071068
-      objectReference: {fileID: 0}
-    - target: {fileID: 1630000045372067231, guid: 938b14cba38e78e4382eebf762ae5d8e,
-        type: 3}
-      propertyPath: m_LocalRotation.x
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 1630000045372067231, guid: 938b14cba38e78e4382eebf762ae5d8e,
-        type: 3}
-      propertyPath: m_LocalRotation.y
-      value: 0.7071068
-      objectReference: {fileID: 0}
-    - target: {fileID: 1630000045372067231, guid: 938b14cba38e78e4382eebf762ae5d8e,
-        type: 3}
-      propertyPath: m_LocalRotation.z
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 1630000045372067231, guid: 938b14cba38e78e4382eebf762ae5d8e,
-        type: 3}
-      propertyPath: m_LocalEulerAnglesHint.x
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 1630000045372067231, guid: 938b14cba38e78e4382eebf762ae5d8e,
-        type: 3}
-      propertyPath: m_LocalEulerAnglesHint.y
-      value: 90
-      objectReference: {fileID: 0}
-    - target: {fileID: 1630000045372067231, guid: 938b14cba38e78e4382eebf762ae5d8e,
-        type: 3}
-      propertyPath: m_LocalEulerAnglesHint.z
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 7405666344198245619, guid: 938b14cba38e78e4382eebf762ae5d8e,
-        type: 3}
-      propertyPath: m_Name
-      value: Young Thug
-      objectReference: {fileID: 0}
-    m_RemovedComponents: []
-  m_SourcePrefab: {fileID: 100100000, guid: 938b14cba38e78e4382eebf762ae5d8e, type: 3}
