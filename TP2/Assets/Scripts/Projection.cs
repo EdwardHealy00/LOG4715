@@ -62,6 +62,7 @@ public class Projection : MonoBehaviour
     
     public void EnableTrajectory(bool enable)
     {
+        m_line.positionCount = 0;
         m_line.enabled = enable;
     }
 }
