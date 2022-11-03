@@ -13,10 +13,14 @@ public class SlimeManager : MonoBehaviour
 
     public SlimeColor Color { get; set; }
 
+    public Dictionary<SlimeColor, int> OrbCount { get; set; }
+
     public SlingshotState SlingshotState { get; set; }
 
     private const float k_NonStickRadius = .5f;
     private Vector3 m_LastCollisionPoint;
+
+    
 
 
     void Awake()
