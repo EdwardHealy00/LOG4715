@@ -11,7 +11,16 @@ public class SlimeManager : MonoBehaviour
     public Transform BodyCenter { get; set; }
     public Rigidbody Rigidbody { get; set; }
 
-    public SlimeColor Color { get; set; }
+    public SlimeColor CurrentColor { get; set; }
+    
+    public Dictionary<SlimeColor, uint> Orbs = new Dictionary<SlimeColor, uint>()
+    {
+        { SlimeColor.Green, 1}, 
+        { SlimeColor.Yellow, 2},
+        { SlimeColor.Pink, 4},
+        { SlimeColor.Orange, 12},
+        { SlimeColor.Blue, 1}
+    };
 
     public SlingshotState SlingshotState { get; set; }
 
@@ -23,7 +32,7 @@ public class SlimeManager : MonoBehaviour
     {
         Rigidbody = GetComponent<Rigidbody>();
         BodyCenter = transform.Find("BodyCenter");
-        Color = SlimeColor.Yellow;
+        //Color = SlimeColor.Yellow;
         m_LastCollisionPoint = transform.position;
     }
     void OnCollisionStay(Collision collisionInfo)
@@ -46,7 +55,7 @@ public class SlimeManager : MonoBehaviour
     
     void OnCollisionEnter(Collision collisionInfo)
     {
-        switch (Color)
+        switch (CurrentColor)
         {
             case SlimeColor.Yellow:
                 if (SlingshotState == SlingshotState.Moving && (m_LastCollisionPoint - transform.position).magnitude > k_NonStickRadius)
