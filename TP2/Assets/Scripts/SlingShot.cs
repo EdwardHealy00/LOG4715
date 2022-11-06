@@ -8,12 +8,13 @@ public class SlingShot : MonoBehaviour
     private SlimeManager m_SlimeManager;
     private Projection m_Projection;
     private const float k_MinPullDistance = 1f;
-    
+
+    [Header("SlingShot Settings")]
     [SerializeField] private float m_ThrowSpeed;
     [SerializeField] private float m_MaxPullDistance;
     [SerializeField] private float m_PullDistanceDivider;
 
-    [SerializeField] private GameObject _ballPrefab;
+    
     void Start()
     {
         m_SlimeManager = GetComponent<SlimeManager>();
@@ -38,6 +39,8 @@ public class SlingShot : MonoBehaviour
                         {
                             m_StartPullPos = Input.mousePosition;
                             m_SlimeManager.SlingshotState = SlingshotState.UserPulling;
+                            //set a grab cursor
+                            Cursor.SetCursor(null, Vector2.zero, CursorMode.Auto);
                         }
                     }
                     m_Projection.EnableTrajectory(true);
@@ -68,7 +71,7 @@ public class SlingShot : MonoBehaviour
                     {
                         m_Projection.EnableTrajectory(true);
                         m_Projection.SetLineWidth(m_PullDistance.magnitude / m_MaxPullDistance);
-                        m_Projection.SimulateTrajectory(_ballPrefab, m_SlimeManager.BodyCenter.position, m_PullDistance * m_ThrowSpeed);
+                        m_Projection.SimulateTrajectory(m_SlimeManager.BodyCenter.position, m_PullDistance * m_ThrowSpeed);
                     }
 
                 }

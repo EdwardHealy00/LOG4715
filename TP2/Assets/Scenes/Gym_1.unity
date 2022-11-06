@@ -452,57 +452,11 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
-    - target: {fileID: 2079261315, guid: 938b14cba38e78e4382eebf762ae5d8e, type: 3}
-      propertyPath: m_Materials.Array.data[0]
-      value: 
-      objectReference: {fileID: 2100000, guid: cba9900382c5c7947920f07b255b38dc, type: 2}
-    - target: {fileID: 2079261315, guid: 938b14cba38e78e4382eebf762ae5d8e, type: 3}
-      propertyPath: m_Parameters.widthMultiplier
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 2079261315, guid: 938b14cba38e78e4382eebf762ae5d8e, type: 3}
-      propertyPath: m_Parameters.widthCurve.m_Curve.Array.data[0].time
-      value: 0.029624939
-      objectReference: {fileID: 0}
-    - target: {fileID: 2079261315, guid: 938b14cba38e78e4382eebf762ae5d8e, type: 3}
-      propertyPath: m_Parameters.widthCurve.m_Curve.Array.data[0].value
-      value: 0.04762268
-      objectReference: {fileID: 0}
-    - target: {fileID: 1034187739499194775, guid: 938b14cba38e78e4382eebf762ae5d8e,
-        type: 3}
-      propertyPath: m_Enabled
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 1034187739499194775, guid: 938b14cba38e78e4382eebf762ae5d8e,
-        type: 3}
-      propertyPath: m_MaxWidth
-      value: 0.1
-      objectReference: {fileID: 0}
-    - target: {fileID: 1034187739499194775, guid: 938b14cba38e78e4382eebf762ae5d8e,
-        type: 3}
-      propertyPath: m_MinWidth
-      value: 0.01
-      objectReference: {fileID: 0}
-    - target: {fileID: 1034187739499194775, guid: 938b14cba38e78e4382eebf762ae5d8e,
-        type: 3}
-      propertyPath: _obstaclesParent
-      value: 
-      objectReference: {fileID: 1100103973}
     - target: {fileID: 1034187739499194775, guid: 938b14cba38e78e4382eebf762ae5d8e,
         type: 3}
       propertyPath: m_ObstaclesParent
       value: 
       objectReference: {fileID: 1100103973}
-    - target: {fileID: 1034187739499194775, guid: 938b14cba38e78e4382eebf762ae5d8e,
-        type: 3}
-      propertyPath: m_MaxPhysicsFrameIterations
-      value: 30
-      objectReference: {fileID: 0}
-    - target: {fileID: 1364205673229281715, guid: 938b14cba38e78e4382eebf762ae5d8e,
-        type: 3}
-      propertyPath: m_Layer
-      value: 0
-      objectReference: {fileID: 0}
     - target: {fileID: 1630000045372067231, guid: 938b14cba38e78e4382eebf762ae5d8e,
         type: 3}
       propertyPath: m_RootOrder
@@ -558,72 +512,11 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
-    - target: {fileID: 2193070687132666798, guid: 938b14cba38e78e4382eebf762ae5d8e,
-        type: 3}
-      propertyPath: m_Layer
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 2529827305136160265, guid: 938b14cba38e78e4382eebf762ae5d8e,
-        type: 3}
-      propertyPath: m_Layer
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 3558636871397664972, guid: 938b14cba38e78e4382eebf762ae5d8e,
-        type: 3}
-      propertyPath: m_Layer
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 3660836786159845079, guid: 938b14cba38e78e4382eebf762ae5d8e,
-        type: 3}
-      propertyPath: _ballPrefab
-      value: 
-      objectReference: {fileID: 2389161829925248245, guid: 950fe431d15339a438bc17667df227e6,
-        type: 3}
-    - target: {fileID: 3660836786159845079, guid: 938b14cba38e78e4382eebf762ae5d8e,
-        type: 3}
-      propertyPath: m_MaxPullDistance
-      value: 3
-      objectReference: {fileID: 0}
-    - target: {fileID: 3660836786159845079, guid: 938b14cba38e78e4382eebf762ae5d8e,
-        type: 3}
-      propertyPath: m_PullDistanceDivider
-      value: 9
-      objectReference: {fileID: 0}
-    - target: {fileID: 5309607604110626769, guid: 938b14cba38e78e4382eebf762ae5d8e,
-        type: 3}
-      propertyPath: m_Layer
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 5683889538514817102, guid: 938b14cba38e78e4382eebf762ae5d8e,
-        type: 3}
-      propertyPath: m_Layer
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 6733915810486729214, guid: 938b14cba38e78e4382eebf762ae5d8e,
-        type: 3}
-      propertyPath: m_Layer
-      value: 0
-      objectReference: {fileID: 0}
     - target: {fileID: 7405666344198245619, guid: 938b14cba38e78e4382eebf762ae5d8e,
         type: 3}
       propertyPath: m_Name
       value: Young Thug
       objectReference: {fileID: 0}
-    - target: {fileID: 7405666344198245619, guid: 938b14cba38e78e4382eebf762ae5d8e,
-        type: 3}
-      propertyPath: m_Layer
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 7405666344198245619, guid: 938b14cba38e78e4382eebf762ae5d8e,
-        type: 3}
-      propertyPath: m_TagString
-      value: Player
-      objectReference: {fileID: 0}
-    - target: {fileID: 8133218666272660921, guid: 938b14cba38e78e4382eebf762ae5d8e,
-        type: 3}
-      propertyPath: m_Materials.Array.data[0]
-      value: 
-      objectReference: {fileID: 2100000, guid: cba9900382c5c7947920f07b255b38dc, type: 2}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 938b14cba38e78e4382eebf762ae5d8e, type: 3}
 --- !u!4 &499326441 stripped

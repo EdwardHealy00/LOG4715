@@ -8,10 +8,18 @@ using UnityEngine.SceneManagement;
 public class Projection : MonoBehaviour
 {
     private LineRenderer m_line;
+    [Header("Trajectory Line Length")]
     [SerializeField] private uint m_MaxPhysicsFrameIterations = 30;
-    [SerializeField] private Transform m_ObstaclesParent;
+
+    [Header("Trajectory Line Width")]
     [SerializeField] private float m_MinWidth = 0.01f;
     [SerializeField] private float m_MaxWidth = 0.1f;
+
+    [Header("Parent Object of All Obstacles")]
+    [SerializeField] private Transform m_ObstaclesParent;
+
+    [Header("GameObject Simulating the Trajectory")]
+    [SerializeField] private GameObject m_ballPrefab;
 
     private Scene m_SimulationScene;
     private PhysicsScene m_PhysicsScene;
@@ -45,9 +53,9 @@ public class Projection : MonoBehaviour
         }
     }
 
-    public void SimulateTrajectory(GameObject ballPrefab, Vector3 pos, Vector3 velocity)
+    public void SimulateTrajectory(Vector3 pos, Vector3 velocity)
     {
-        var ghostObj = Instantiate(ballPrefab, pos, Quaternion.identity);
+        var ghostObj = Instantiate(m_ballPrefab, pos, Quaternion.identity);
         SceneManager.MoveGameObjectToScene(ghostObj.gameObject, m_SimulationScene);
        
         ghostObj.GetComponent<Rigidbody>().AddForce(velocity, ForceMode.Impulse);
@@ -75,4 +83,10 @@ public class Projection : MonoBehaviour
         m_line.startWidth = width;
         m_line.endWidth = width;
     }
+
+    public void SetLineMaterial(Material material)
+    {
+        m_line.material = material;
+    }
+
 }
