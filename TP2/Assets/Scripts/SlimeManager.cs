@@ -20,14 +20,12 @@ public class SlimeManager : MonoBehaviour
     private const float k_NonStickRadius = .5f;
     private Vector3 m_LastCollisionPoint;
 
-    
-
 
     void Awake()
     {
         Rigidbody = GetComponent<Rigidbody>();
         BodyCenter = transform.Find("BodyCenter");
-        Color = SlimeColor.Yellow;
+        Color = SlimeColor.Green;
         m_LastCollisionPoint = transform.position;
     }
     void OnCollisionStay(Collision collisionInfo)
