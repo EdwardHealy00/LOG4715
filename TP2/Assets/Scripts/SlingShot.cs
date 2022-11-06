@@ -50,8 +50,7 @@ public class SlingShot : MonoBehaviour
                     m_SlimeManager.SlingshotState = SlingshotState.Idle;
                     m_Projection.EnableTrajectory(false);
                 }
-                
-                if (Input.GetMouseButton(0))
+                else if (Input.GetMouseButton(0))
                 {
                     m_PullDistance = m_StartPullPos - Input.mousePosition;
                     m_PullDistance /= m_PullDistanceDivider;
