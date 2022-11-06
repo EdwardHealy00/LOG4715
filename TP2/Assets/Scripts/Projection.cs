@@ -1,3 +1,4 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -7,12 +8,14 @@ using UnityEngine.SceneManagement;
 public class Projection : MonoBehaviour
 {
     private LineRenderer m_line;
-    [SerializeField] private int m_MaxPhysicsFrameIterations = 100;
-    [SerializeField] private Transform _obstaclesParent;
+    [SerializeField] private uint m_MaxPhysicsFrameIterations = 30;
+    [SerializeField] private Transform m_ObstaclesParent;
+    [SerializeField] private float m_MinWidth = 0.01f;
+    [SerializeField] private float m_MaxWidth = 0.1f;
 
-    private Scene _simulationScene;
-    private PhysicsScene _physicsScene;
-    private readonly Dictionary<Transform, Transform> _spawnedObjects = new Dictionary<Transform, Transform>();
+    private Scene m_SimulationScene;
+    private PhysicsScene m_PhysicsScene;
+    private readonly Dictionary<Transform, Transform> m_SpawnedObjects = new Dictionary<Transform, Transform>();
 
     private void Start()
     {
@@ -22,39 +25,38 @@ public class Projection : MonoBehaviour
 
     private void CreatePhysicsScene()
     {
-        _simulationScene = SceneManager.CreateScene("Simulation", new CreateSceneParameters(LocalPhysicsMode.Physics3D));
-        _physicsScene = _simulationScene.GetPhysicsScene();
+        m_SimulationScene = SceneManager.CreateScene("Simulation", new CreateSceneParameters(LocalPhysicsMode.Physics3D));
+        m_PhysicsScene = m_SimulationScene.GetPhysicsScene();
 
-        foreach (Transform obj in _obstaclesParent)
+        foreach (Transform obj in m_ObstaclesParent)
         {
             var ghostObj = Instantiate(obj.gameObject, obj.position, obj.rotation);
             ghostObj.GetComponent<Renderer>().enabled = false;
-            SceneManager.MoveGameObjectToScene(ghostObj, _simulationScene);
-            if (!ghostObj.isStatic) _spawnedObjects.Add(obj, ghostObj.transform);
+            SceneManager.MoveGameObjectToScene(ghostObj, m_SimulationScene);
+            if (!ghostObj.isStatic) m_SpawnedObjects.Add(obj, ghostObj.transform);
         }
     }
 
     private void Update()
     {
-        foreach (var item in _spawnedObjects)
+        foreach (var item in m_SpawnedObjects)
         {
-            item.Value.position = item.Key.position;
-            item.Value.rotation = item.Key.rotation;
+            item.Value.SetPositionAndRotation(item.Key.position, item.Key.rotation);
         }
     }
 
     public void SimulateTrajectory(GameObject ballPrefab, Vector3 pos, Vector3 velocity)
     {
         var ghostObj = Instantiate(ballPrefab, pos, Quaternion.identity);
-        SceneManager.MoveGameObjectToScene(ghostObj.gameObject, _simulationScene);
+        SceneManager.MoveGameObjectToScene(ghostObj.gameObject, m_SimulationScene);
        
         ghostObj.GetComponent<Rigidbody>().AddForce(velocity, ForceMode.Impulse);
 
-        m_line.positionCount = m_MaxPhysicsFrameIterations;
+        m_line.positionCount = (int)m_MaxPhysicsFrameIterations;
 
         for (var i = 0; i < m_MaxPhysicsFrameIterations; i++)
         {
-            _physicsScene.Simulate(Time.fixedDeltaTime);
+            m_PhysicsScene.Simulate(Time.fixedDeltaTime);
             m_line.SetPosition(i, ghostObj.transform.position);
         }
 
@@ -65,5 +67,12 @@ public class Projection : MonoBehaviour
     {
         m_line.positionCount = 0;
         m_line.enabled = enable;
+    }
+
+    public void SetLineWidth(float width)
+    {
+        width = Mathf.Lerp(m_MinWidth, m_MaxWidth, width);
+        m_line.startWidth = width;
+        m_line.endWidth = width;
     }
 }

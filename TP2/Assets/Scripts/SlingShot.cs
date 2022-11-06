@@ -68,9 +68,10 @@ public class SlingShot : MonoBehaviour
                     else
                     {
                         m_Projection.EnableTrajectory(true);
+                        m_Projection.SetLineWidth(m_PullDistance.magnitude / m_MaxPullDistance);
+                        m_Projection.SimulateTrajectory(_ballPrefab, m_SlimeManager.BodyCenter.position, m_PullDistance * m_ThrowSpeed);
                     }
 
-                    m_Projection.SimulateTrajectory(_ballPrefab, m_SlimeManager.BodyCenter.position, m_PullDistance * m_ThrowSpeed);
                 }
                 else if (m_PullDistance.magnitude > k_MinPullDistance)
                 {
