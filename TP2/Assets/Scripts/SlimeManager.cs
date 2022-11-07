@@ -13,8 +13,6 @@ public class SlimeManager : MonoBehaviour
 
     public Dictionary<SlimeColor, SlimeOrb> Orbs;
 
-    public Dictionary<SlimeColor, int> OrbCount { get; set; }
-
     public SlingshotState SlingshotState { get; set; }
 
     private const float k_NonStickRadius = .5f;
@@ -23,20 +21,13 @@ public class SlimeManager : MonoBehaviour
     private SphereCollider m_SphereCollider;
     private Projection m_Projection;
 
-    [Header("Slime Materials")]
-    [SerializeField] private Material m_GreenMaterial;
-    [SerializeField] private Material m_PinkMaterial;
-    [SerializeField] private Material m_YellowMaterial;
-    [SerializeField] private Material m_BlueMaterial;
-    [SerializeField] private Material m_OrangeMaterial;
-
     [Header("Ground")]
     [SerializeField] private LayerMask m_WhatIsGround;
 
     [Header("Null Slime Veclocity")]
     [SerializeField] private  float m_Epsilon = .1f;
 
-    public Dictionary<SlimeColor, Material> SlimeMaterials { get; set; }
+
 
     
     void Awake()
