@@ -4,11 +4,14 @@ using UnityEngine;
 public class OrbManager : MonoBehaviour
 {
     [SerializeField] private SlimeColor m_Color;
+    
+
     private void OnTriggerEnter(Collider other)
     {
         if (other.gameObject.CompareTag("Player"))
         {
-            Debug.Log($"Orb {m_Color} collected");
+            other.GetComponent<SlimeManager>().Orbs[m_Color].Amount++;
+
             Destroy(gameObject);
         }
     }

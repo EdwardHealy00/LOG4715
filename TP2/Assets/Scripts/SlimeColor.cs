@@ -42,7 +42,7 @@ public static class SlimeOrbsGenerator
     }
 }
 
-public struct SlimeOrb
+public class SlimeOrb
 {
     public SlimeColor slimeColor;
     public string Name;

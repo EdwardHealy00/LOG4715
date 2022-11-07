@@ -38,16 +38,18 @@ public class SlimeManager : MonoBehaviour
 
     public Dictionary<SlimeColor, Material> SlimeMaterials { get; set; }
 
-
+    
     void Awake()
     {
         Orbs = SlimeOrbsGenerator.GenerateOrbs();
+        Orbs[SlimeColor.Green].Amount = 1;
         Rigidbody = GetComponent<Rigidbody>();
         BodyCenter = transform.Find("BodyCenter");
         m_LastCollisionPoint = transform.position;
         m_SkinnedMeshRenderer = GetComponentInChildren<SkinnedMeshRenderer>();
         m_SphereCollider = GetComponent<SphereCollider>();
         m_Projection = GetComponent<Projection>();
+        
         ForceChangeColor(SlimeColor.Green);
     }
     

@@ -28,10 +28,6 @@ public class Projection : MonoBehaviour
     private void Awake()
     {
         m_line = GetComponent<LineRenderer>();
-    }
-
-    private void Start()
-    {
         CreatePhysicsScene();
     }
 

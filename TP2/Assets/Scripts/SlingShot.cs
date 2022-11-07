@@ -81,6 +81,7 @@ public class SlingShot : MonoBehaviour
                     m_SlimeManager.SlingshotState = SlingshotState.Moving;
                     m_SlimeManager.Rigidbody.isKinematic = false;
                     m_SlimeManager.Rigidbody.AddForce(m_PullDistance * m_ThrowSpeed, ForceMode.Impulse);
+                    m_SlimeManager.Orbs[m_SlimeManager.CurrentColor].Amount--;
                     m_Projection.EnableTrajectory(false);
                 }
                 break;
