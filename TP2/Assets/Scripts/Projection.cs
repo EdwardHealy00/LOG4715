@@ -25,9 +25,13 @@ public class Projection : MonoBehaviour
     private PhysicsScene m_PhysicsScene;
     private readonly Dictionary<Transform, Transform> m_SpawnedObjects = new Dictionary<Transform, Transform>();
 
-    private void Start()
+    private void Awake()
     {
         m_line = GetComponent<LineRenderer>();
+    }
+
+    private void Start()
+    {
         CreatePhysicsScene();
     }
 

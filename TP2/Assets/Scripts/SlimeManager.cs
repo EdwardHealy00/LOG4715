@@ -8,7 +8,10 @@ public class SlimeManager : MonoBehaviour
     public Transform BodyCenter { get; set; }
     public Rigidbody Rigidbody { get; set; }
 
-    public SlimeColor Color { get; set; }
+    public SlimeColor CurrentColor { get; set; }
+    public SlimeColor NextColor { get; set; }
+
+    public Dictionary<SlimeColor, SlimeOrb> Orbs;
 
     public Dictionary<SlimeColor, int> OrbCount { get; set; }
 
@@ -16,6 +19,9 @@ public class SlimeManager : MonoBehaviour
 
     private const float k_NonStickRadius = .5f;
     private Vector3 m_LastCollisionPoint;
+    private SkinnedMeshRenderer m_SkinnedMeshRenderer;
+    private SphereCollider m_SphereCollider;
+    private Projection m_Projection;
 
     [Header("Slime Materials")]
     [SerializeField] private Material m_GreenMaterial;
@@ -35,20 +41,16 @@ public class SlimeManager : MonoBehaviour
 
     void Awake()
     {
+        Orbs = SlimeOrbsGenerator.GenerateOrbs();
         Rigidbody = GetComponent<Rigidbody>();
         BodyCenter = transform.Find("BodyCenter");
-        Color = SlimeColor.Green;
         m_LastCollisionPoint = transform.position;
-        SlimeMaterials = new Dictionary<SlimeColor, Material>
-        {
-            {SlimeColor.Green, m_GreenMaterial},
-            {SlimeColor.Pink, m_PinkMaterial},
-            {SlimeColor.Yellow, m_YellowMaterial},
-            {SlimeColor.Blue, m_BlueMaterial},
-            {SlimeColor.Orange, m_OrangeMaterial}
-        };
-
+        m_SkinnedMeshRenderer = GetComponentInChildren<SkinnedMeshRenderer>();
+        m_SphereCollider = GetComponent<SphereCollider>();
+        m_Projection = GetComponent<Projection>();
+        ForceChangeColor(SlimeColor.Green);
     }
+    
     void OnCollisionStay(Collision collisionInfo)
     {
         CheckGrounded(collisionInfo);
@@ -69,7 +71,7 @@ public class SlimeManager : MonoBehaviour
 
     void OnCollisionEnter(Collision collisionInfo)
     {
-        switch (Color)
+        switch (CurrentColor)
         {
             case SlimeColor.Yellow:
                 if (SlingshotState == SlingshotState.Moving && (m_LastCollisionPoint - transform.position).magnitude > k_NonStickRadius)
@@ -86,5 +88,27 @@ public class SlimeManager : MonoBehaviour
                 break;
         }
         CheckGrounded(collisionInfo);
+    }
+
+    public void ChangeColorFromWheel(SlimeColor selectedOrb)
+    {
+        NextColor = selectedOrb;
+        m_Projection.SetLineMaterial(Orbs[selectedOrb].Material);
+        if (!Grounded)
+        {
+            CurrentColor = selectedOrb;
+            m_SkinnedMeshRenderer.material = Orbs[selectedOrb].Material;
+            m_SphereCollider.material = Orbs[selectedOrb].PhysicMaterial;
+        }
+    }
+    
+    public void ForceChangeColor(SlimeColor selectedOrb)
+    {
+        CurrentColor = selectedOrb;
+        NextColor = selectedOrb;
+        m_SkinnedMeshRenderer.material = Orbs[selectedOrb].Material;
+        m_Projection.SetLineMaterial(Orbs[selectedOrb].Material);
+        m_SphereCollider.material = Orbs[selectedOrb].PhysicMaterial;
+       
     }
 }
