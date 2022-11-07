@@ -12,29 +12,31 @@ public class SlimeManager : MonoBehaviour
     public Rigidbody Rigidbody { get; set; }
 
     public SlimeColor CurrentColor { get; set; }
-    
-    public Dictionary<SlimeColor, uint> Orbs = new Dictionary<SlimeColor, uint>()
-    {
-        { SlimeColor.Green, 1}, 
-        { SlimeColor.Yellow, 2},
-        { SlimeColor.Pink, 4},
-        { SlimeColor.Orange, 12},
-        { SlimeColor.Blue, 1}
-    };
+    public SlimeColor NextColor { get; set; }
+
+    public Dictionary<SlimeColor, SlimeOrb> Orbs;
 
     public SlingshotState SlingshotState { get; set; }
 
     private const float k_NonStickRadius = .5f;
     private Vector3 m_LastCollisionPoint;
+    private SkinnedMeshRenderer m_SkinnedMeshRenderer;
+    private SphereCollider m_SphereCollider;
+    private Projection m_Projection;
 
 
     void Awake()
     {
+        Orbs = SlimeOrbsGenerator.GenerateOrbs();
         Rigidbody = GetComponent<Rigidbody>();
         BodyCenter = transform.Find("BodyCenter");
-        //Color = SlimeColor.Yellow;
         m_LastCollisionPoint = transform.position;
+        m_SkinnedMeshRenderer = GetComponentInChildren<SkinnedMeshRenderer>();
+        m_SphereCollider = GetComponent<SphereCollider>();
+        m_Projection = gameObject.GetComponent<Projection>();
+        ForceChangeColor(SlimeColor.Green);
     }
+    
     void OnCollisionStay(Collision collisionInfo)
     {
         CheckGrounded(collisionInfo);
@@ -72,5 +74,27 @@ public class SlimeManager : MonoBehaviour
                 break;
         }
         CheckGrounded(collisionInfo);
+    }
+
+    public void ChangeColorFromWheel(SlimeColor selectedOrb)
+    {
+        NextColor = selectedOrb;
+        m_Projection.Line.material = Orbs[selectedOrb].Material;
+        if (!Grounded)
+        {
+            CurrentColor = selectedOrb;
+            m_SkinnedMeshRenderer.material = Orbs[selectedOrb].Material;
+            m_SphereCollider.material = Orbs[selectedOrb].PhysicMaterial;
+        }
+    }
+    
+    public void ForceChangeColor(SlimeColor selectedOrb)
+    {
+        CurrentColor = selectedOrb;
+        NextColor = selectedOrb;
+        m_SkinnedMeshRenderer.material = Orbs[selectedOrb].Material;
+        m_Projection.Line.material = Orbs[selectedOrb].Material;
+        m_SphereCollider.material = Orbs[selectedOrb].PhysicMaterial;
+       
     }
 }

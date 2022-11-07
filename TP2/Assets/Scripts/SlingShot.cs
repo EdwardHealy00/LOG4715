@@ -74,7 +74,7 @@ public class SlingShot : MonoBehaviour
                 }
                 else if (m_PullDistance.magnitude > k_MinPullDistance)
                 {
-                    
+                    m_SlimeManager.ForceChangeColor(m_SlimeManager.NextColor);
                     m_SlimeManager.SlingshotState = SlingshotState.Moving;
                     m_SlimeManager.Rigidbody.isKinematic = false;
                     m_SlimeManager.Rigidbody.AddForce(m_PullDistance * m_ThrowSpeed, ForceMode.Impulse);

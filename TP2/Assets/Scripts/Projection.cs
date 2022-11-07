@@ -1,3 +1,4 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -6,7 +7,7 @@ using UnityEngine.SceneManagement;
 //Inspired by: https://github.com/Matthew-J-Spencer/Trajectory-Line-Unity 
 public class Projection : MonoBehaviour
 {
-    private LineRenderer m_line;
+    public LineRenderer Line;
     [SerializeField] private int m_MaxPhysicsFrameIterations = 100;
     [SerializeField] private Transform _obstaclesParent;
 
@@ -14,9 +15,13 @@ public class Projection : MonoBehaviour
     private PhysicsScene _physicsScene;
     private readonly Dictionary<Transform, Transform> _spawnedObjects = new Dictionary<Transform, Transform>();
 
+    private void Awake()
+    {
+        Line = GetComponent<LineRenderer>();
+    }
+
     private void Start()
     {
-        m_line = GetComponent<LineRenderer>();
         CreatePhysicsScene();
     }
 
@@ -50,12 +55,12 @@ public class Projection : MonoBehaviour
        
         ghostObj.GetComponent<Rigidbody>().AddForce(velocity, ForceMode.Impulse);
 
-        m_line.positionCount = m_MaxPhysicsFrameIterations;
+        Line.positionCount = m_MaxPhysicsFrameIterations;
 
         for (var i = 0; i < m_MaxPhysicsFrameIterations; i++)
         {
             _physicsScene.Simulate(Time.fixedDeltaTime);
-            m_line.SetPosition(i, ghostObj.transform.position);
+            Line.SetPosition(i, ghostObj.transform.position);
         }
 
         Destroy(ghostObj.gameObject);
@@ -63,7 +68,7 @@ public class Projection : MonoBehaviour
     
     public void EnableTrajectory(bool enable)
     {
-        m_line.positionCount = 0;
-        m_line.enabled = enable;
+        Line.positionCount = 0;
+        Line.enabled = enable;
     }
 }
