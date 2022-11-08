@@ -22,15 +22,14 @@ public class SlimeManager : MonoBehaviour
     private SphereCollider m_SphereCollider;
     private Projection m_Projection;
 
-    [Header("Ground")]
-    [SerializeField] private LayerMask m_WhatIsGround;
+    [Header("Grounded Settings")]
+    [SerializeField] private float m_NullSlimeVelocity = .1f;
+    [SerializeField] private float m_TimeBeforeGrounded = .1f;
 
-    [Header("Null Slime Veclocity")]
-    [SerializeField] private  float m_Epsilon = .1f;
+    private float m_GroundedTimer = 0;
 
 
 
-    
     void Awake()
     {
         Orbs = SlimeOrbsGenerator.GenerateOrbs();
@@ -47,22 +46,38 @@ public class SlimeManager : MonoBehaviour
         ForceChangeColor(SlimeColor.Green);
     }
     
+    void Update()
+    {
+        CheckGrounded();
+    }
+    
     void OnCollisionStay(Collision collisionInfo)
     {
-        CheckGrounded(collisionInfo);
         m_LastCollisionPoint = transform.position;
     }
 
-    private void CheckGrounded(Collision collisionInfo)
+    private void CheckGrounded()
     {
-        //Debug.Log(collisionInfo.gameObject.name);
-        Grounded = false;
-
-        if (Rigidbody.velocity.magnitude < m_Epsilon && m_WhatIsGround == (m_WhatIsGround | (1 << collisionInfo.gameObject.layer)))
+        if (Rigidbody.velocity.magnitude < m_NullSlimeVelocity)
         {
+            if (Grounded) return;
+            
+            m_GroundedTimer += Time.deltaTime;
+            if (m_GroundedTimer < m_TimeBeforeGrounded)
+            {
+                Grounded = false;
+                return;
+            }
+            m_GroundedTimer = 0;
+            
             Grounded = true;
             SlingshotState = SlingshotState.Idle;
             AutoSetNextColor();
+        }
+        else
+        {
+            Grounded = false;
+            m_GroundedTimer = 0;
         }
     }
 
@@ -84,7 +99,7 @@ public class SlimeManager : MonoBehaviour
             default:
                 break;
         }
-        CheckGrounded(collisionInfo);
+        CheckGrounded();
     }
 
     public void ChangeColor(SlimeColor selectedOrb)
@@ -94,11 +109,11 @@ public class SlimeManager : MonoBehaviour
 
         NextColor = selectedOrb;
         m_Projection.SetLineMaterial(Orbs[selectedOrb].Material);
+            m_SphereCollider.material = Orbs[selectedOrb].PhysicMaterial;
         if (!Grounded)
         {
             CurrentColor = selectedOrb;
             m_SkinnedMeshRenderer.material = Orbs[selectedOrb].Material;
-            m_SphereCollider.material = Orbs[selectedOrb].PhysicMaterial;
         }
     }
     

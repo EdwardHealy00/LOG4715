@@ -115,6 +115,7 @@ public class OrbWheelManager : MonoBehaviour
     {
         m_BlurMaterial.SetFloat(m_BlurIntensityID, 0f);
         m_BlurPanel.SetActive(true);
+        m_OrbWheel.SetActive(true);
         Time.timeScale = m_SlowMotionTimeScale;
         Time.fixedDeltaTime = m_StartFixedDeltaTime * m_SlowMotionTimeScale;
     }
@@ -141,5 +142,6 @@ public class OrbWheelManager : MonoBehaviour
             return;
         }
         m_BlurPanel.SetActive(false);
+        m_OrbWheel.SetActive(false);
     }
 }
