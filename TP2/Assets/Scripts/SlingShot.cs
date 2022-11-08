@@ -29,7 +29,7 @@ public class SlingShot : MonoBehaviour
         {
             
             case SlingshotState.Idle:
-                if (Input.GetMouseButtonDown(0) && m_SlimeManager.Grounded)
+                if (Input.GetMouseButtonDown(0) && m_SlimeManager.Grounded && m_SlimeManager.CanUseColor(m_SlimeManager.NextColor))
                 {
                     Ray ray = Camera.main.ScreenPointToRay(Input.mousePosition);
                     RaycastHit raycastHit;
@@ -39,8 +39,6 @@ public class SlingShot : MonoBehaviour
                         {
                             m_StartPullPos = Input.mousePosition;
                             m_SlimeManager.SlingshotState = SlingshotState.UserPulling;
-                            //set a grab cursor
-                            Cursor.SetCursor(null, Vector2.zero, CursorMode.Auto);
                         }
                     }
                     m_Projection.EnableTrajectory(true);
@@ -81,7 +79,7 @@ public class SlingShot : MonoBehaviour
                     m_SlimeManager.SlingshotState = SlingshotState.Moving;
                     m_SlimeManager.Rigidbody.isKinematic = false;
                     m_SlimeManager.Rigidbody.AddForce(m_PullDistance * m_ThrowSpeed, ForceMode.Impulse);
-                    m_SlimeManager.Orbs[m_SlimeManager.CurrentColor].Amount--;
+                    m_SlimeManager.UseColor();
                     m_Projection.EnableTrajectory(false);
                 }
                 break;

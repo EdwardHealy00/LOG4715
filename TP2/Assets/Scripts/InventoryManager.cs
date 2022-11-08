@@ -9,6 +9,7 @@ public class InventoryManager : MonoBehaviour
     SlimeManager m_SlimeManager;
     Dictionary<SlimeColor, TMP_Text> m_InventoryOrbLabels;
     Dictionary<SlimeColor, Button> m_InventoryOrbButtons;
+    GameObject m_Selection; 
 
     void Start()
     {
@@ -30,11 +31,13 @@ public class InventoryManager : MonoBehaviour
             {SlimeColor.Blue, transform.Find("Blue Orb").gameObject.GetComponentInChildren<TMP_Text>()}
         };
 
+        m_Selection = transform.Find("Selection").gameObject;
+
         foreach (var (slimeColor, button) in m_InventoryOrbButtons)
         {
             button.onClick.AddListener(() =>
             {
-                m_SlimeManager.ForceChangeColor(slimeColor);
+                m_SlimeManager.ChangeColor(slimeColor);
             });
         }
     }
@@ -47,6 +50,28 @@ public class InventoryManager : MonoBehaviour
             tmpText.text = m_SlimeManager.Orbs[slimeColor].Amount.ToString();
             m_InventoryOrbButtons[slimeColor].interactable = m_SlimeManager.Orbs[slimeColor].Amount > 0;
         }
-        m_InventoryOrbButtons[m_SlimeManager.CurrentColor].interactable = false;
+        m_Selection.transform.position = m_InventoryOrbButtons[m_SlimeManager.NextColor].transform.position;
+
+
+        if (Input.GetKeyDown(KeyCode.Alpha1))
+        {
+            m_SlimeManager.ChangeColor(SlimeColor.Green);
+        }
+        else if (Input.GetKeyDown(KeyCode.Alpha2) )
+        {
+            m_SlimeManager.ChangeColor(SlimeColor.Pink);
+        }
+        else if (Input.GetKeyDown(KeyCode.Alpha3))
+        {
+            m_SlimeManager.ChangeColor(SlimeColor.Yellow);
+        }
+        else if (Input.GetKeyDown(KeyCode.Alpha4))
+        {
+            m_SlimeManager.ChangeColor(SlimeColor.Blue);
+        }
+        else if (Input.GetKeyDown(KeyCode.Alpha5))
+        {
+            m_SlimeManager.ChangeColor(SlimeColor.Orange);
+        }
     }
 }

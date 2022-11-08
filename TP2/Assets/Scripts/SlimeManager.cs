@@ -1,6 +1,7 @@
 using System;
 using System.Collections;
 using System.Collections.Generic;
+using System.Linq;
 using UnityEngine;
 public class SlimeManager : MonoBehaviour
 {
@@ -33,7 +34,9 @@ public class SlimeManager : MonoBehaviour
     void Awake()
     {
         Orbs = SlimeOrbsGenerator.GenerateOrbs();
-        Orbs[SlimeColor.Green].Amount = 1;
+        Orbs[SlimeColor.Green].Amount = 2;
+        Orbs[SlimeColor.Yellow].Amount = 3;
+        Orbs[SlimeColor.Pink].Amount = 2;
         Rigidbody = GetComponent<Rigidbody>();
         BodyCenter = transform.Find("BodyCenter");
         m_LastCollisionPoint = transform.position;
@@ -59,6 +62,7 @@ public class SlimeManager : MonoBehaviour
         {
             Grounded = true;
             SlingshotState = SlingshotState.Idle;
+            AutoSetNextColor();
         }
     }
 
@@ -83,8 +87,11 @@ public class SlimeManager : MonoBehaviour
         CheckGrounded(collisionInfo);
     }
 
-    public void ChangeColorFromWheel(SlimeColor selectedOrb)
+    public void ChangeColor(SlimeColor selectedOrb)
     {
+        if (!CanUseColor(selectedOrb))
+            return;
+
         NextColor = selectedOrb;
         m_Projection.SetLineMaterial(Orbs[selectedOrb].Material);
         if (!Grounded)
@@ -102,6 +109,41 @@ public class SlimeManager : MonoBehaviour
         m_SkinnedMeshRenderer.material = Orbs[selectedOrb].Material;
         m_Projection.SetLineMaterial(Orbs[selectedOrb].Material);
         m_SphereCollider.material = Orbs[selectedOrb].PhysicMaterial;
-       
+    }
+
+    public bool CanUseColor(SlimeColor color)
+    {
+        return Orbs[color].Amount > 0;
+    }
+
+    public void UseColor()
+    {
+        if (CanUseColor(NextColor))
+        {
+            Orbs[NextColor].Amount--;
+            ForceChangeColor(NextColor);
+        }
+        else
+        {
+            Debug.LogError("Can't use color");
+        }
+    }
+    
+    public void AutoSetNextColor()
+    {
+        if (Orbs[NextColor].Amount == 0)
+        {
+            //sort orbs by amount
+            var orbs = new List<SlimeOrb>(Orbs.Values);
+            if (orbs.All(x => x.Amount <= 0))
+            {
+                Debug.Log("Game Over");
+            }
+
+            orbs.Sort((x, y) => x.Amount.CompareTo(y.Amount));
+            NextColor = orbs[^1].slimeColor;
+        }
+
+        ChangeColor(NextColor);
     }
 }

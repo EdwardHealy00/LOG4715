@@ -106,7 +106,7 @@ public class OrbWheelManager : MonoBehaviour
             m_OrbAnimators[selectedOrb].SetBool("Hovered", true);
             m_SelectedOrbText.text = Slime.Orbs[selectedOrb].Name;
             m_SelectedOrbText.color = Slime.Orbs[selectedOrb].Color;
-            Slime.ChangeColorFromWheel(selectedOrb);
+            Slime.ChangeColor(selectedOrb);
             m_selectedOrb = selectedOrb;
         }
     }   
