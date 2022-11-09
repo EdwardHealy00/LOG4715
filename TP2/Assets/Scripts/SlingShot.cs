@@ -7,6 +7,7 @@ public class SlingShot : MonoBehaviour
     private Vector3 m_PullDistance;
     private SlimeManager m_SlimeManager;
     private Projection m_Projection;
+    private CursorManager m_CursorManager;
     private const float k_MinPullDistance = 1f;
 
     [Header("SlingShot Settings")]
@@ -20,6 +21,7 @@ public class SlingShot : MonoBehaviour
         m_SlimeManager = GetComponent<SlimeManager>();
         m_SlimeManager.SlingshotState = SlingshotState.Idle;
         m_Projection = GetComponent<Projection>();
+        m_CursorManager = FindObjectOfType<CursorManager>();
     }
 
     void Update()
@@ -32,8 +34,7 @@ public class SlingShot : MonoBehaviour
                 if (Input.GetMouseButtonDown(0) && m_SlimeManager.Grounded && m_SlimeManager.CanUseColor(m_SlimeManager.NextColor))
                 {
                     Ray ray = Camera.main.ScreenPointToRay(Input.mousePosition);
-                    RaycastHit raycastHit;
-                    if (Physics.Raycast(ray, out raycastHit, 100f))
+                    if (Physics.Raycast(ray, out RaycastHit raycastHit, 100f))
                     {
                         if (raycastHit.transform == transform)
                         {

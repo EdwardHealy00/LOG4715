@@ -21,6 +21,8 @@ public class SlimeManager : MonoBehaviour
     private SkinnedMeshRenderer m_SkinnedMeshRenderer;
     private SphereCollider m_SphereCollider;
     private Projection m_Projection;
+    private CursorManager m_CursorManager;
+
 
     [Header("Grounded Settings")]
     [SerializeField] private float m_NullSlimeVelocity = .1f;
@@ -42,15 +44,39 @@ public class SlimeManager : MonoBehaviour
         m_SkinnedMeshRenderer = GetComponentInChildren<SkinnedMeshRenderer>();
         m_SphereCollider = GetComponent<SphereCollider>();
         m_Projection = GetComponent<Projection>();
-        
+        m_CursorManager = FindObjectOfType<CursorManager>();
+
         ForceChangeColor(SlimeColor.Green);
     }
-    
+
     void Update()
     {
         CheckGrounded();
+        Ray ray = Camera.main.ScreenPointToRay(Input.mousePosition);
+        if (Physics.Raycast(ray, out RaycastHit raycastHit, 100f) && raycastHit.transform == transform)
+        {
+
+            if (SlingshotState == SlingshotState.Idle)
+            {
+                m_CursorManager.SetCursor(CursorState.Grab);
+            }
+            else if (SlingshotState == SlingshotState.UserPulling)
+            {
+                m_CursorManager.SetCursor(CursorState.Grabbing);
+            }
+            else if (SlingshotState == SlingshotState.Moving)
+            {
+                m_CursorManager.SetCursor(CursorState.Busy);
+            }
+
+        }
+        else
+        {
+            if (SlingshotState != SlingshotState.UserPulling)
+                m_CursorManager.ResetCursor();
+        }
     }
-    
+
     void OnCollisionStay(Collision collisionInfo)
     {
         m_LastCollisionPoint = transform.position;
@@ -61,7 +87,7 @@ public class SlimeManager : MonoBehaviour
         if (Rigidbody.velocity.magnitude < m_NullSlimeVelocity)
         {
             if (Grounded) return;
-            
+
             m_GroundedTimer += Time.deltaTime;
             if (m_GroundedTimer < m_TimeBeforeGrounded)
             {
@@ -69,9 +95,10 @@ public class SlimeManager : MonoBehaviour
                 return;
             }
             m_GroundedTimer = 0;
-            
+
             Grounded = true;
             SlingshotState = SlingshotState.Idle;
+            m_CursorManager.SetCursor(CursorState.Pointer);
             AutoSetNextColor();
         }
         else
@@ -109,14 +136,14 @@ public class SlimeManager : MonoBehaviour
 
         NextColor = selectedOrb;
         m_Projection.SetLineMaterial(Orbs[selectedOrb].Material);
-            m_SphereCollider.material = Orbs[selectedOrb].PhysicMaterial;
+        m_SphereCollider.material = Orbs[selectedOrb].PhysicMaterial;
         if (!Grounded)
         {
             CurrentColor = selectedOrb;
             m_SkinnedMeshRenderer.material = Orbs[selectedOrb].Material;
         }
     }
-    
+
     public void ForceChangeColor(SlimeColor selectedOrb)
     {
         CurrentColor = selectedOrb;
@@ -143,7 +170,7 @@ public class SlimeManager : MonoBehaviour
             Debug.LogError("Can't use color");
         }
     }
-    
+
     public void AutoSetNextColor()
     {
         if (Orbs[NextColor].Amount == 0)
