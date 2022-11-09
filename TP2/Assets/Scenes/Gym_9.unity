@@ -135,7 +135,7 @@ GameObject:
   - component: {fileID: 67072740}
   - component: {fileID: 67072739}
   - component: {fileID: 67072738}
-  m_Layer: 8
+  m_Layer: 3
   m_Name: Floor (1)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -232,7 +232,7 @@ GameObject:
   - component: {fileID: 277567161}
   - component: {fileID: 277567160}
   - component: {fileID: 277567159}
-  m_Layer: 8
+  m_Layer: 3
   m_Name: Wall
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -345,6 +345,11 @@ PrefabInstance:
     - target: {fileID: 2079261315, guid: 938b14cba38e78e4382eebf762ae5d8e, type: 3}
       propertyPath: m_Parameters.widthCurve.m_Curve.Array.data[0].value
       value: 0.04762268
+      objectReference: {fileID: 0}
+    - target: {fileID: 1034187739499194775, guid: 938b14cba38e78e4382eebf762ae5d8e,
+        type: 3}
+      propertyPath: m_Length
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 1034187739499194775, guid: 938b14cba38e78e4382eebf762ae5d8e,
         type: 3}
@@ -663,7 +668,7 @@ GameObject:
   - component: {fileID: 501423723}
   - component: {fileID: 501423722}
   - component: {fileID: 501423721}
-  m_Layer: 8
+  m_Layer: 3
   m_Name: Floor (4)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -929,7 +934,7 @@ GameObject:
   - component: {fileID: 576614968}
   - component: {fileID: 576614967}
   - component: {fileID: 576614966}
-  m_Layer: 8
+  m_Layer: 3
   m_Name: Floor (3)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1170,7 +1175,7 @@ GameObject:
   - component: {fileID: 968593847}
   - component: {fileID: 968593846}
   - component: {fileID: 968593845}
-  m_Layer: 8
+  m_Layer: 3
   m_Name: Wall (2)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1449,7 +1454,7 @@ GameObject:
   - component: {fileID: 1245279603}
   - component: {fileID: 1245279602}
   - component: {fileID: 1245279601}
-  m_Layer: 8
+  m_Layer: 3
   m_Name: Floor
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -2108,7 +2113,7 @@ GameObject:
   - component: {fileID: 2064368121}
   - component: {fileID: 2064368120}
   - component: {fileID: 2064368119}
-  m_Layer: 8
+  m_Layer: 3
   m_Name: Floor (5)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -2317,6 +2322,11 @@ PrefabInstance:
         indiqu\xE9e par la ligne de projection sera celle utilis\xE9e pour le prochain
         lanc\xE9.\n\nDirectement apr\xE8s avoir lanc\xE9 le slime, observez qu'il
         a pris la couleur de la ligne de projection et que l'orbe a \xE9t\xE9 utilis\xE9."
+      objectReference: {fileID: 0}
+    - target: {fileID: 1437124620130334921, guid: ef2255dc07aa1b44c826fc1051c6906c,
+        type: 3}
+      propertyPath: m_AnchoredPosition.y
+      value: -167
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: ef2255dc07aa1b44c826fc1051c6906c, type: 3}

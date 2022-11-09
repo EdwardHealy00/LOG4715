@@ -2,6 +2,7 @@ using System;
 using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
+using TMPro;
 using UnityEngine;
 public class SlimeManager : MonoBehaviour
 {
@@ -187,6 +188,8 @@ public class SlimeManager : MonoBehaviour
             {
                 Debug.Log("Game Over");
                 GameOver = true;
+                GameObject.Find("Game Over Canvas")?.transform.GetChild(0).gameObject.SetActive(true);
+                return;
             }
 
             orbs.Sort((x, y) => x.Amount.CompareTo(y.Amount));

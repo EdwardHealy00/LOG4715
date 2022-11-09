@@ -7,7 +7,6 @@ public class SlingShot : MonoBehaviour
     private Vector3 m_PullDistance;
     private SlimeManager m_SlimeManager;
     private Projection m_Projection;
-    private CursorManager m_CursorManager;
     private const float k_MinPullDistance = 1f;
 
     [Header("SlingShot Settings")]
@@ -21,7 +20,6 @@ public class SlingShot : MonoBehaviour
         m_SlimeManager = GetComponent<SlimeManager>();
         m_SlimeManager.SlingshotState = SlingshotState.Idle;
         m_Projection = GetComponent<Projection>();
-        m_CursorManager = FindObjectOfType<CursorManager>();
     }
 
     void Update()
@@ -71,7 +69,7 @@ public class SlingShot : MonoBehaviour
                         m_SlimeManager.SlingshotState = SlingshotState.UserPulling;
                         m_Projection.EnableTrajectory(true);
                         m_Projection.SetLineWidth(m_PullDistance.magnitude / m_MaxPullDistance);
-                        m_Projection.SimulateTrajectory(m_SlimeManager.BodyCenter.position, m_PullDistance * m_ThrowSpeed);
+                        m_Projection.DrawProjection(m_SlimeManager.BodyCenter.position, m_PullDistance * m_ThrowSpeed);
                     }
 
                 }
