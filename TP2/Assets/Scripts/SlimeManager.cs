@@ -31,6 +31,8 @@ public class SlimeManager : MonoBehaviour
     [SerializeField] private float m_TimeBeforeGrounded = .1f;
     
     [Header("Starting Orbs")]
+    [SerializeField] private SlimeColor StartingColor = SlimeColor.Green;
+    
     [SerializeField] private uint greenOrbsAtStart = 1;
     [SerializeField] private uint yellowOrbsAtStart = 1;
     [SerializeField] private uint blueOrbsAtStart = 1;
@@ -52,7 +54,7 @@ public class SlimeManager : MonoBehaviour
         m_Projection = GetComponent<Projection>();
         m_CursorManager = FindObjectOfType<CursorManager>();
 
-        ForceChangeColor(SlimeColor.Green);
+        ForceChangeColor(StartingColor);
     }
 
     void Update()
