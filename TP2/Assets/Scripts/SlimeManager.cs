@@ -11,6 +11,7 @@ public class SlimeManager : MonoBehaviour
 
     public SlimeColor CurrentColor { get; set; }
     public SlimeColor NextColor { get; set; }
+    public bool GameOver { get; set; } = false;
 
     public Dictionary<SlimeColor, SlimeOrb> Orbs;
 
@@ -36,8 +37,8 @@ public class SlimeManager : MonoBehaviour
     {
         Orbs = SlimeOrbsGenerator.GenerateOrbs();
         Orbs[SlimeColor.Green].Amount = 2;
-        Orbs[SlimeColor.Yellow].Amount = 3;
-        Orbs[SlimeColor.Pink].Amount = 2;
+        Orbs[SlimeColor.Yellow].Amount = 0;
+        Orbs[SlimeColor.Pink].Amount = 0;
         Rigidbody = GetComponent<Rigidbody>();
         BodyCenter = transform.Find("BodyCenter");
         m_LastCollisionPoint = transform.position;
@@ -53,10 +54,15 @@ public class SlimeManager : MonoBehaviour
     {
         CheckGrounded();
         Ray ray = Camera.main.ScreenPointToRay(Input.mousePosition);
+        
         if (Physics.Raycast(ray, out RaycastHit raycastHit, 100f) && raycastHit.transform == transform)
         {
 
-            if (SlingshotState == SlingshotState.Idle)
+            if (GameOver)
+            {
+                m_CursorManager.SetCursor(CursorState.Busy);
+            }
+            else if (SlingshotState == SlingshotState.Idle)
             {
                 m_CursorManager.SetCursor(CursorState.Grab);
             }
@@ -68,7 +74,6 @@ public class SlimeManager : MonoBehaviour
             {
                 m_CursorManager.SetCursor(CursorState.Busy);
             }
-
         }
         else
         {
@@ -180,6 +185,7 @@ public class SlimeManager : MonoBehaviour
             if (orbs.All(x => x.Amount <= 0))
             {
                 Debug.Log("Game Over");
+                GameOver = true;
             }
 
             orbs.Sort((x, y) => x.Amount.CompareTo(y.Amount));
