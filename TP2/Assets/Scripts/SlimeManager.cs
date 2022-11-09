@@ -29,17 +29,21 @@ public class SlimeManager : MonoBehaviour
     [Header("Grounded Settings")]
     [SerializeField] private float m_NullSlimeVelocity = .1f;
     [SerializeField] private float m_TimeBeforeGrounded = .1f;
-
+    
+    [Header("Starting Orbs")]
+    [SerializeField] private uint greenOrbsAtStart = 1;
+    [SerializeField] private uint yellowOrbsAtStart = 1;
+    [SerializeField] private uint blueOrbsAtStart = 1;
+    [SerializeField] private uint orangeOrbsAtStart =1;
+    [SerializeField] private uint pinkOrbsAtStart = 1;
+    
     private float m_GroundedTimer = 0;
 
 
 
     void Awake()
     {
-        Orbs = SlimeOrbsGenerator.GenerateOrbs();
-        Orbs[SlimeColor.Green].Amount = 2;
-        Orbs[SlimeColor.Yellow].Amount = 0;
-        Orbs[SlimeColor.Pink].Amount = 0;
+        Orbs = SlimeOrbsGenerator.GenerateOrbs(greenOrbsAtStart, yellowOrbsAtStart, blueOrbsAtStart, orangeOrbsAtStart, pinkOrbsAtStart);
         Rigidbody = GetComponent<Rigidbody>();
         BodyCenter = transform.Find("BodyCenter");
         m_LastCollisionPoint = transform.position;

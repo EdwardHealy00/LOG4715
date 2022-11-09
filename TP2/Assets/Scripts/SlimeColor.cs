@@ -4,37 +4,38 @@ using UnityEngine;
 
 public static class SlimeOrbsGenerator
 {
-    public static Dictionary<SlimeColor, SlimeOrb> GenerateOrbs()
+    public static Dictionary<SlimeColor, SlimeOrb> GenerateOrbs(uint greenAmount, uint yellowAmount, uint orangeAmount,
+        uint blueAmount, uint pinkAmount)
     {
         return new Dictionary<SlimeColor, SlimeOrb>()
         {
             {
                 SlimeColor.Green,
-                new SlimeOrb(SlimeColor.Green, "Typical Green", Color.green, 0,
+                new SlimeOrb(SlimeColor.Green, "Typical Green", Color.green, greenAmount,
                     (Material) Resources.Load("Materials/green"),
                     (PhysicMaterial) Resources.Load("PhysicMaterials/SlimeMaterials/DefaultGreen"))
             },
             {
                 SlimeColor.Yellow,
-                new SlimeOrb(SlimeColor.Yellow, "Sticky Yellow", Color.yellow, 0,
+                new SlimeOrb(SlimeColor.Yellow, "Sticky Yellow", Color.yellow, yellowAmount,
                     (Material) Resources.Load("Materials/yellow"),
                     (PhysicMaterial) Resources.Load("PhysicMaterials/SlimeMaterials/StickyYellow"))
             },
             {
                 SlimeColor.Orange,
-                new SlimeOrb(SlimeColor.Orange, "Piercing Orange", new Color(1.0f, 0.64f, 0.0f), 0,
+                new SlimeOrb(SlimeColor.Orange, "Piercing Orange", new Color(1.0f, 0.64f, 0.0f), orangeAmount,
                     (Material) Resources.Load("Materials/orange"),
                     (PhysicMaterial) Resources.Load("PhysicMaterials/SlimeMaterials/DefaultGreen"))
             },
             {
                 SlimeColor.Blue,
-                new SlimeOrb(SlimeColor.Blue, "Piercing Blue", Color.cyan, 0,
+                new SlimeOrb(SlimeColor.Blue, "Piercing Blue", Color.cyan, blueAmount,
                     (Material) Resources.Load("Materials/blue"),
                     (PhysicMaterial) Resources.Load("PhysicMaterials/SlimeMaterials/DefaultGreen"))
             },
             {
                 SlimeColor.Pink,
-                new SlimeOrb(SlimeColor.Pink, "Bouncy Pink", Color.magenta, 0,
+                new SlimeOrb(SlimeColor.Pink, "Bouncy Pink", Color.magenta, pinkAmount,
                     (Material) Resources.Load("Materials/pink"),
                     (PhysicMaterial) Resources.Load("PhysicMaterials/SlimeMaterials/BouncyPink"))
             },
