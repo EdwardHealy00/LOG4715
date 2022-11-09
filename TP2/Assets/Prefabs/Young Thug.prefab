@@ -352,7 +352,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 630605de8d4f20444aca260c7a0570e6, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  m_MaxPhysicsFrameIterations: 30
+  m_Length: 1
   m_MinWidth: 0.01
   m_MaxWidth: 0.1
   m_ObstaclesParent: {fileID: 0}
@@ -401,15 +401,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f3b86fc7e0490f740bf2c5aed0a3462b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  m_GreenMaterial: {fileID: 2100000, guid: cba9900382c5c7947920f07b255b38dc, type: 2}
-  m_PinkMaterial: {fileID: 2100000, guid: 9f2c5bd2244b5c1428f974f816dafa0e, type: 2}
-  m_YellowMaterial: {fileID: 2100000, guid: c5dd42a25889e3b44a1c0d32cbc70e5d, type: 2}
-  m_BlueMaterial: {fileID: 0}
-  m_OrangeMaterial: {fileID: 0}
-  m_WhatIsGround:
-    serializedVersion: 2
-    m_Bits: 256
-  m_Epsilon: 0.1
+  m_NullSlimeVelocity: 0.1
+  m_TimeBeforeGrounded: 0.1
 --- !u!120 &2079261315
 LineRenderer:
   m_ObjectHideFlags: 0
