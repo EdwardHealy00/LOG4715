@@ -144,6 +144,7 @@ public class SlimeManager : MonoBehaviour
         m_SphereCollider.material = Orbs[selectedOrb].PhysicMaterial;
         if (!Grounded)
         {
+            UseColor();
             CurrentColor = selectedOrb;
             m_SkinnedMeshRenderer.material = Orbs[selectedOrb].Material;
         }

@@ -68,6 +68,7 @@ public class SlingShot : MonoBehaviour
                     } 
                     else
                     {
+                        m_SlimeManager.SlingshotState = SlingshotState.UserPulling;
                         m_Projection.EnableTrajectory(true);
                         m_Projection.SetLineWidth(m_PullDistance.magnitude / m_MaxPullDistance);
                         m_Projection.SimulateTrajectory(m_SlimeManager.BodyCenter.position, m_PullDistance * m_ThrowSpeed);
@@ -80,6 +81,11 @@ public class SlingShot : MonoBehaviour
                     m_SlimeManager.Rigidbody.isKinematic = false;
                     m_SlimeManager.Rigidbody.AddForce(m_PullDistance * m_ThrowSpeed, ForceMode.Impulse);
                     m_SlimeManager.UseColor();
+                    m_Projection.EnableTrajectory(false);
+                }
+                else if (m_PullDistance.magnitude < k_MinPullDistance)
+                {
+                    m_SlimeManager.SlingshotState = SlingshotState.Idle;
                     m_Projection.EnableTrajectory(false);
                 }
                 break;
