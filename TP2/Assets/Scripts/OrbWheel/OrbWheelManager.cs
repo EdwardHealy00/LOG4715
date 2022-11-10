@@ -8,7 +8,6 @@ using UnityEngine.Windows.Speech;
 
 public class OrbWheelManager : MonoBehaviour
 {
-    public SlimeManager Slime;
     public float m_SlowMotionTimeScale = 0.1f;
     private float m_StartTimeScale;
     private float m_StartFixedDeltaTime;
@@ -21,11 +20,13 @@ public class OrbWheelManager : MonoBehaviour
     private SlimeColor m_selectedOrb = SlimeColor.None;
     private bool k_IsWheelOpened = false;
 
+    private SlimeManager m_Slime;
     private Dictionary<SlimeColor, Animator> m_OrbAnimators;
     private Dictionary<SlimeColor, TMP_Text> m_OrbAmountLabels;
     // Start is called before the first frame update
     void Start()
     {
+        m_Slime = GameObject.FindGameObjectWithTag("Player").GetComponent<SlimeManager>();
         m_StartTimeScale = Time.timeScale;
         m_StartFixedDeltaTime = Time.fixedDeltaTime;
         
@@ -71,6 +72,8 @@ public class OrbWheelManager : MonoBehaviour
             k_IsWheelOpened = false;
             StopSlowMotion();
             m_Anim.SetBool("ShowWheel", false);
+            
+            if(!m_Slime.Grounded) m_Slime.UseColor();
         }
 
         if (k_IsWheelOpened)
@@ -89,7 +92,7 @@ public class OrbWheelManager : MonoBehaviour
     {
         foreach (var (slimeColor, tmpText) in m_OrbAmountLabels)
         {
-            tmpText.text = Slime.Orbs[slimeColor].Amount.ToString();
+            tmpText.text = m_Slime.Orbs[slimeColor].Amount.ToString();
         }
     }
 
@@ -104,9 +107,9 @@ public class OrbWheelManager : MonoBehaviour
         {
             if(m_selectedOrb != SlimeColor.None) m_OrbAnimators[m_selectedOrb].SetBool("Hovered", false);
             m_OrbAnimators[selectedOrb].SetBool("Hovered", true);
-            m_SelectedOrbText.text = Slime.Orbs[selectedOrb].Name;
-            m_SelectedOrbText.color = Slime.Orbs[selectedOrb].Color;
-            Slime.ChangeColor(selectedOrb);
+            m_SelectedOrbText.text = m_Slime.Orbs[selectedOrb].Name;
+            m_SelectedOrbText.color = m_Slime.Orbs[selectedOrb].Color;
+            m_Slime.ChangeColor(selectedOrb, false);
             m_selectedOrb = selectedOrb;
         }
     }   

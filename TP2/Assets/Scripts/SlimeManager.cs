@@ -141,7 +141,7 @@ public class SlimeManager : MonoBehaviour
         CheckGrounded();
     }
 
-    public void ChangeColor(SlimeColor selectedOrb)
+    public void ChangeColor(SlimeColor selectedOrb, bool fromInventory)
     {
         if (!CanUseColor(selectedOrb))
             return;
@@ -151,7 +151,7 @@ public class SlimeManager : MonoBehaviour
         m_SphereCollider.material = Orbs[selectedOrb].PhysicMaterial;
         if (!Grounded)
         {
-            UseColor();
+            if(fromInventory) UseColor();   
             CurrentColor = selectedOrb;
             m_SkinnedMeshRenderer.material = Orbs[selectedOrb].Material;
         }
@@ -202,6 +202,6 @@ public class SlimeManager : MonoBehaviour
             NextColor = orbs[^1].slimeColor;
         }
 
-        ChangeColor(NextColor);
+        ChangeColor(NextColor, false);
     }
 }
