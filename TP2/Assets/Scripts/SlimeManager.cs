@@ -199,7 +199,7 @@ public class SlimeManager : MonoBehaviour
             {
                 Debug.Log("Game Over");
                 GameOver = true;
-                GameObject.Find("Game Over Canvas")?.transform.GetChild(0).gameObject.SetActive(true);
+                GameObject.Find("Gym Controls")?.transform.GetChild(0).gameObject.SetActive(true);
                 return;
             }
 
