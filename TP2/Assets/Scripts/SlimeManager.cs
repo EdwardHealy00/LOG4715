@@ -151,14 +151,18 @@ public class SlimeManager : MonoBehaviour
         m_SphereCollider.material = Orbs[selectedOrb].PhysicMaterial;
         if (!Grounded)
         {
-            if(fromInventory) UseColor();   
-            CurrentColor = selectedOrb;
+            if (fromInventory)
+            {
+                UseColor();
+            }   
+            
             m_SkinnedMeshRenderer.material = Orbs[selectedOrb].Material;
         }
     }
 
     public void ForceChangeColor(SlimeColor selectedOrb)
     {
+        Debug.Log("ForceChange");
         CurrentColor = selectedOrb;
         NextColor = selectedOrb;
         m_SkinnedMeshRenderer.material = Orbs[selectedOrb].Material;
@@ -175,6 +179,7 @@ public class SlimeManager : MonoBehaviour
     {
         if (CanUseColor(NextColor))
         {
+            Debug.Log("Consumed");
             Orbs[NextColor].Amount--;
             ForceChangeColor(NextColor);
         }
