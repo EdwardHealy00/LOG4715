@@ -73,7 +73,7 @@ public class OrbWheelManager : MonoBehaviour
             StopSlowMotion();
             m_Anim.SetBool("ShowWheel", false);
             
-            if(!m_Slime.Grounded) m_Slime.UseColor();
+            if(!m_Slime.Grounded && m_selectedOrb != m_Slime.CurrentColor) m_Slime.UseColor();
         }
 
         if (k_IsWheelOpened)
