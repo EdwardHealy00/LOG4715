@@ -1518,10 +1518,14 @@ MonoBehaviour:
   - m_X: 443
     m_Y: 260
     m_Width: 5
-    m_Height: 763
-  - m_X: 443
+    m_Height: 60
+  - m_X: 507
+    m_Y: 323
+    m_Width: 516
+    m_Height: 700
+  - m_X: 507
     m_Y: 320
-    m_Width: 580
+    m_Width: 8
     m_Height: 703
   - m_X: 318
     m_Y: 258

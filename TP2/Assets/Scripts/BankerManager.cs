@@ -44,7 +44,7 @@ public class BankerManager : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if (k_isBankOpen && Vector3.Distance(transform.position, m_slime.transform.position) < 2f && m_slime.Grounded)
+        if (CanTrade())
         {
             m_pressSpaceIcon.SetBool("CanTrade", true);
             if (Input.GetKeyDown(KeyCode.Space))
@@ -89,4 +89,13 @@ public class BankerManager : MonoBehaviour
             yield return new WaitForSeconds(.05f);
         }
     }
+
+    private bool HasEnoughOrbs()
+    {
+        return m_slime.Orbs[TakeColor].Amount >= TakeAmount;
+    } 
+    private bool CanTrade()
+    {
+        return k_isBankOpen && HasEnoughOrbs() && Vector3.Distance(transform.position, m_slime.transform.position) < 2f && m_slime.Grounded;
+    } 
 }
