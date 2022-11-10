@@ -199,9 +199,7 @@ public class SlimeManager : MonoBehaviour
             }
 
             orbs.Sort((x, y) => x.Amount.CompareTo(y.Amount));
-            NextColor = orbs[^1].slimeColor;
+            ChangeColor(orbs[^1].slimeColor);
         }
-
-        ChangeColor(NextColor);
     }
 }
