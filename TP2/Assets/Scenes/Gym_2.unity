@@ -790,12 +790,12 @@ PrefabInstance:
     - target: {fileID: 3660836786159845079, guid: 938b14cba38e78e4382eebf762ae5d8e,
         type: 3}
       propertyPath: m_MaxPullDistance
-      value: 3
+      value: 5
       objectReference: {fileID: 0}
     - target: {fileID: 3660836786159845079, guid: 938b14cba38e78e4382eebf762ae5d8e,
         type: 3}
       propertyPath: m_PullDistanceDivider
-      value: 9
+      value: 20
       objectReference: {fileID: 0}
     - target: {fileID: 5309607604110626769, guid: 938b14cba38e78e4382eebf762ae5d8e,
         type: 3}

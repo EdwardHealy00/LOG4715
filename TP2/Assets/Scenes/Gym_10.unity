@@ -556,7 +556,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 2079261313, guid: 938b14cba38e78e4382eebf762ae5d8e, type: 3}
       propertyPath: greenOrbsAtStart
-      value: 2
+      value: 3
       objectReference: {fileID: 0}
     - target: {fileID: 2079261313, guid: 938b14cba38e78e4382eebf762ae5d8e, type: 3}
       propertyPath: orangeOrbsAtStart
@@ -701,12 +701,12 @@ PrefabInstance:
     - target: {fileID: 3660836786159845079, guid: 938b14cba38e78e4382eebf762ae5d8e,
         type: 3}
       propertyPath: m_MaxPullDistance
-      value: 3
+      value: 5
       objectReference: {fileID: 0}
     - target: {fileID: 3660836786159845079, guid: 938b14cba38e78e4382eebf762ae5d8e,
         type: 3}
       propertyPath: m_PullDistanceDivider
-      value: 9
+      value: 20
       objectReference: {fileID: 0}
     - target: {fileID: 5309607604110626769, guid: 938b14cba38e78e4382eebf762ae5d8e,
         type: 3}
@@ -971,7 +971,22 @@ PrefabInstance:
     - target: {fileID: 1656016328985111297, guid: c6cc53b006d1ba84d807604158bd04c2,
         type: 3}
       propertyPath: m_Name
-      value: Banker 1
+      value: Banker
+      objectReference: {fileID: 0}
+    - target: {fileID: 1656016328985111303, guid: c6cc53b006d1ba84d807604158bd04c2,
+        type: 3}
+      propertyPath: TakeAmount
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 1656016328985111303, guid: c6cc53b006d1ba84d807604158bd04c2,
+        type: 3}
+      propertyPath: ReceiveColor
+      value: 4
+      objectReference: {fileID: 0}
+    - target: {fileID: 1656016328985111303, guid: c6cc53b006d1ba84d807604158bd04c2,
+        type: 3}
+      propertyPath: ReceiveAmount
+      value: 3
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: c6cc53b006d1ba84d807604158bd04c2, type: 3}
@@ -1416,7 +1431,7 @@ PrefabInstance:
     - target: {fileID: 1656016328985111297, guid: c6cc53b006d1ba84d807604158bd04c2,
         type: 3}
       propertyPath: m_Name
-      value: Banker 1 (1)
+      value: Banker (1)
       objectReference: {fileID: 0}
     - target: {fileID: 1656016328985111303, guid: c6cc53b006d1ba84d807604158bd04c2,
         type: 3}
@@ -1426,12 +1441,17 @@ PrefabInstance:
     - target: {fileID: 1656016328985111303, guid: c6cc53b006d1ba84d807604158bd04c2,
         type: 3}
       propertyPath: TakeAmount
-      value: 2
+      value: 3
       objectReference: {fileID: 0}
     - target: {fileID: 1656016328985111303, guid: c6cc53b006d1ba84d807604158bd04c2,
         type: 3}
       propertyPath: ReceiveColor
       value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 1656016328985111303, guid: c6cc53b006d1ba84d807604158bd04c2,
+        type: 3}
+      propertyPath: ReceiveAmount
+      value: 2
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: c6cc53b006d1ba84d807604158bd04c2, type: 3}
