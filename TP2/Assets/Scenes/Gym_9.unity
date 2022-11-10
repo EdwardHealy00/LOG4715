@@ -330,6 +330,22 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 2079261313, guid: 938b14cba38e78e4382eebf762ae5d8e, type: 3}
+      propertyPath: blueOrbsAtStart
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2079261313, guid: 938b14cba38e78e4382eebf762ae5d8e, type: 3}
+      propertyPath: pinkOrbsAtStart
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2079261313, guid: 938b14cba38e78e4382eebf762ae5d8e, type: 3}
+      propertyPath: greenOrbsAtStart
+      value: 3
+      objectReference: {fileID: 0}
+    - target: {fileID: 2079261313, guid: 938b14cba38e78e4382eebf762ae5d8e, type: 3}
+      propertyPath: orangeOrbsAtStart
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 2079261315, guid: 938b14cba38e78e4382eebf762ae5d8e, type: 3}
       propertyPath: m_Materials.Array.data[0]
       value: 
@@ -2555,15 +2571,22 @@ PrefabInstance:
     - target: {fileID: 1437124620130334918, guid: ef2255dc07aa1b44c826fc1051c6906c,
         type: 3}
       propertyPath: m_text
-      value: "Lancez le joueur sur un orbe afin de le r\xE9cup\xE9rer.\n\nLa couleur
-        indiqu\xE9e par la ligne de projection sera celle utilis\xE9e pour le prochain
-        lanc\xE9.\n\nDirectement apr\xE8s avoir lanc\xE9 le slime, observez qu'il
-        a pris la couleur de la ligne de projection et que l'orbe a \xE9t\xE9 utilis\xE9."
+      value: "Lancez le slime sur un orbe (source) afin de le r\xE9cup\xE9rer. \n\nLa
+        couleur indiqu\xE9e par la ligne de projection sera celle utilis\xE9e pour
+        le prochain lanc\xE9.\n\nDirectement apr\xE8s avoir lanc\xE9 le slime, observez
+        qu'il a pris la couleur de la ligne de projection et qu'un orbe de cette
+        ressource a \xE9t\xE9 consomm\xE9 (drain).\n\nAttention, un changement de
+        couleur dans les airs consomme imm\xE9diatement un orbre.\n\n"
       objectReference: {fileID: 0}
     - target: {fileID: 1437124620130334921, guid: ef2255dc07aa1b44c826fc1051c6906c,
         type: 3}
       propertyPath: m_AnchoredPosition.y
       value: -167
+      objectReference: {fileID: 0}
+    - target: {fileID: 1437124620894023798, guid: ef2255dc07aa1b44c826fc1051c6906c,
+        type: 3}
+      propertyPath: m_text
+      value: "Gym 9 \nInventaire\n"
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: ef2255dc07aa1b44c826fc1051c6906c, type: 3}

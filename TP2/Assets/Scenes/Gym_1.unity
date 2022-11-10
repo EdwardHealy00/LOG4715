@@ -135,7 +135,7 @@ GameObject:
   - component: {fileID: 37510649}
   - component: {fileID: 37510648}
   - component: {fileID: 37510647}
-  m_Layer: 8
+  m_Layer: 3
   m_Name: Floor (6)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -232,7 +232,7 @@ GameObject:
   - component: {fileID: 108587784}
   - component: {fileID: 108587783}
   - component: {fileID: 108587782}
-  m_Layer: 8
+  m_Layer: 3
   m_Name: Floor
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -452,6 +452,26 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 2079261313, guid: 938b14cba38e78e4382eebf762ae5d8e, type: 3}
+      propertyPath: blueOrbsAtStart
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2079261313, guid: 938b14cba38e78e4382eebf762ae5d8e, type: 3}
+      propertyPath: pinkOrbsAtStart
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2079261313, guid: 938b14cba38e78e4382eebf762ae5d8e, type: 3}
+      propertyPath: greenOrbsAtStart
+      value: 9999999
+      objectReference: {fileID: 0}
+    - target: {fileID: 2079261313, guid: 938b14cba38e78e4382eebf762ae5d8e, type: 3}
+      propertyPath: orangeOrbsAtStart
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2079261313, guid: 938b14cba38e78e4382eebf762ae5d8e, type: 3}
+      propertyPath: yellowOrbsAtStart
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 1034187739499194775, guid: 938b14cba38e78e4382eebf762ae5d8e,
         type: 3}
       propertyPath: m_ObstaclesParent
@@ -604,7 +624,7 @@ GameObject:
   - component: {fileID: 891039398}
   - component: {fileID: 891039397}
   - component: {fileID: 891039396}
-  m_Layer: 8
+  m_Layer: 3
   m_Name: Floor (3)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -701,7 +721,7 @@ GameObject:
   - component: {fileID: 994298657}
   - component: {fileID: 994298656}
   - component: {fileID: 994298655}
-  m_Layer: 8
+  m_Layer: 3
   m_Name: Floor (5)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -837,7 +857,7 @@ GameObject:
   - component: {fileID: 1131079332}
   - component: {fileID: 1131079331}
   - component: {fileID: 1131079330}
-  m_Layer: 8
+  m_Layer: 3
   m_Name: Wall (2)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1166,7 +1186,7 @@ GameObject:
   - component: {fileID: 1380296404}
   - component: {fileID: 1380296403}
   - component: {fileID: 1380296402}
-  m_Layer: 8
+  m_Layer: 3
   m_Name: Wall
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1251,6 +1271,75 @@ MeshFilter:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1380296400}
   m_Mesh: {fileID: 10202, guid: 0000000000000000e000000000000000, type: 0}
+--- !u!1001 &1484091208
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    m_TransformParent: {fileID: 0}
+    m_Modifications:
+    - target: {fileID: 5597885784065877107, guid: 27dd6ff617e34ae4ab013ea467b2cfc8,
+        type: 3}
+      propertyPath: m_RootOrder
+      value: 6
+      objectReference: {fileID: 0}
+    - target: {fileID: 5597885784065877107, guid: 27dd6ff617e34ae4ab013ea467b2cfc8,
+        type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5597885784065877107, guid: 27dd6ff617e34ae4ab013ea467b2cfc8,
+        type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5597885784065877107, guid: 27dd6ff617e34ae4ab013ea467b2cfc8,
+        type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5597885784065877107, guid: 27dd6ff617e34ae4ab013ea467b2cfc8,
+        type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 5597885784065877107, guid: 27dd6ff617e34ae4ab013ea467b2cfc8,
+        type: 3}
+      propertyPath: m_LocalRotation.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5597885784065877107, guid: 27dd6ff617e34ae4ab013ea467b2cfc8,
+        type: 3}
+      propertyPath: m_LocalRotation.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5597885784065877107, guid: 27dd6ff617e34ae4ab013ea467b2cfc8,
+        type: 3}
+      propertyPath: m_LocalRotation.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5597885784065877107, guid: 27dd6ff617e34ae4ab013ea467b2cfc8,
+        type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5597885784065877107, guid: 27dd6ff617e34ae4ab013ea467b2cfc8,
+        type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5597885784065877107, guid: 27dd6ff617e34ae4ab013ea467b2cfc8,
+        type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5597885784065877117, guid: 27dd6ff617e34ae4ab013ea467b2cfc8,
+        type: 3}
+      propertyPath: m_Name
+      value: CursorManager
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+  m_SourcePrefab: {fileID: 100100000, guid: 27dd6ff617e34ae4ab013ea467b2cfc8, type: 3}
 --- !u!1 &1556721387
 GameObject:
   m_ObjectHideFlags: 0
@@ -1263,7 +1352,7 @@ GameObject:
   - component: {fileID: 1556721391}
   - component: {fileID: 1556721390}
   - component: {fileID: 1556721389}
-  m_Layer: 8
+  m_Layer: 3
   m_Name: Floor (4)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1360,7 +1449,7 @@ GameObject:
   - component: {fileID: 1725219400}
   - component: {fileID: 1725219399}
   - component: {fileID: 1725219398}
-  m_Layer: 8
+  m_Layer: 3
   m_Name: Floor (1)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
