@@ -817,10 +817,10 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: "Pour atteindre le coin sup\xE9rieur gauche dans ce gym, il est n\xE9cessaire
-    de se lancer sur le banquier, d'\xE9changer avec celui-ci, se lancer sur le deuxi\xE8me
-    et d'\xE9changer \xE0 nouveau. \nEnsuite, il est possible de se coller sur le
-    plafond avec l'orbe jaune et de se projet vers la gauche."
+  m_text: "Pour atteindre le coin sup\xE9rieur gauche, il sera n\xE9cessaire de viser
+    le slime sur le banquier gauche et d'accepter l'\xE9change.\n\nEnsuite, il va
+    falloir faire de m\xEAme avec le banquier droit. \n\nEnfin, il sera possible
+    d'atteindre le coin en utilisant les orbes jaunes \xE9chang\xE9s."
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 48fb4713329ba16438f53f6fe7e53024, type: 2}
   m_sharedMaterial: {fileID: -1265486275974871991, guid: 48fb4713329ba16438f53f6fe7e53024,
