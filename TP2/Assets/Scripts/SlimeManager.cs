@@ -22,6 +22,5 @@ public class SlimeManager : MonoBehaviour
         {
             Grounded = true; 
         }
-        Debug.Log(Grounded);
     }
 }

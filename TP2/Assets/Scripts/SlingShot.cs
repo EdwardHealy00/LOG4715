@@ -71,6 +71,5 @@ public class SlingShot : MonoBehaviour
             default:
                 break;
         }
-
     }
 }
