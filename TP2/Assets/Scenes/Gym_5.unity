@@ -2188,8 +2188,8 @@ MonoBehaviour:
   m_text: "Pour atteindre la plateforme de fin avec les 3 orbes disponibles, il sera
     n\xE9cessaire de rebondir sur le mur \xE0 droite et rapidement changer la couleur
     du slime \xE0 jaune dans les airs apr\xE8s le rebond afin de pouvoir se coller
-    au mur et coller au mur un peu \xE0 gauche du centre. On peut ensuite se lancer
-    avec l'orbe rose et rebondir dans la zone sup\xE9rieur gauche!"
+    au mur un peu \xE0 gauche du centre. \n\nIl sera ensuite possible de projeter
+    le slime sur la plateforme."
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 48fb4713329ba16438f53f6fe7e53024, type: 2}
   m_sharedMaterial: {fileID: -1265486275974871991, guid: 48fb4713329ba16438f53f6fe7e53024,
