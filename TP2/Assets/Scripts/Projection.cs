@@ -27,6 +27,7 @@ public class Projection : MonoBehaviour
     private void Awake()
     {
         m_Line = GetComponent<LineRenderer>();
+        m_Line.enabled = false;
         ObstacleLayerMask = LayerMask.GetMask("Obstacle");
     }
 

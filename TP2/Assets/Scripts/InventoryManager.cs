@@ -37,7 +37,7 @@ public class InventoryManager : MonoBehaviour
         {
             button.onClick.AddListener(() =>
             {
-                m_SlimeManager.ChangeColor(slimeColor);
+                m_SlimeManager.ChangeColor(slimeColor, true);
             });
         }
     }
@@ -57,23 +57,23 @@ public class InventoryManager : MonoBehaviour
 
         if (Input.GetKeyDown(KeyCode.Alpha1))
         {
-            m_SlimeManager.ChangeColor(SlimeColor.Green);
+            m_SlimeManager.ChangeColor(SlimeColor.Green, true);
         }
         else if (Input.GetKeyDown(KeyCode.Alpha2) )
         {
-            m_SlimeManager.ChangeColor(SlimeColor.Pink);
+            m_SlimeManager.ChangeColor(SlimeColor.Pink, true);
         }
         else if (Input.GetKeyDown(KeyCode.Alpha3))
         {
-            m_SlimeManager.ChangeColor(SlimeColor.Yellow);
+            m_SlimeManager.ChangeColor(SlimeColor.Yellow, true);
         }
         else if (Input.GetKeyDown(KeyCode.Alpha4))
         {
-            m_SlimeManager.ChangeColor(SlimeColor.Blue);
+            m_SlimeManager.ChangeColor(SlimeColor.Blue, true);
         }
         else if (Input.GetKeyDown(KeyCode.Alpha5))
         {
-            m_SlimeManager.ChangeColor(SlimeColor.Orange);
+            m_SlimeManager.ChangeColor(SlimeColor.Orange, true);
         }
     }
 }
