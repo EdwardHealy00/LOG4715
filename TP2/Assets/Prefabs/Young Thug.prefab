@@ -298,7 +298,7 @@ GameObject:
   - component: {fileID: 8797757963742584430}
   m_Layer: 0
   m_Name: Young Thug
-  m_TagString: Untagged
+  m_TagString: Player
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -352,8 +352,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 630605de8d4f20444aca260c7a0570e6, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  m_MaxPhysicsFrameIterations: 100
-  _obstaclesParent: {fileID: 0}
+  m_Length: 1
+  m_MinWidth: 0.01
+  m_MaxWidth: 0.1
+  m_ObstaclesParent: {fileID: 0}
+  m_ballPrefab: {fileID: 2389161829925248245, guid: 950fe431d15339a438bc17667df227e6,
+    type: 3}
 --- !u!114 &3660836786159845079
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -367,9 +371,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_ThrowSpeed: 5
-  m_MaxPullDistance: 2
-  m_PullDistanceDivider: 1
-  _ballPrefab: {fileID: 7405666344198245619}
+  m_MaxPullDistance: 3
+  m_PullDistanceDivider: 9
 --- !u!54 &2079261305
 Rigidbody:
   m_ObjectHideFlags: 0
@@ -398,9 +401,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f3b86fc7e0490f740bf2c5aed0a3462b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  m_WhatIsGround:
-    serializedVersion: 2
-    m_Bits: 256
+  m_NullSlimeVelocity: 0.1
+  m_TimeBeforeGrounded: 0.1
 --- !u!120 &2079261315
 LineRenderer:
   m_ObjectHideFlags: 0
@@ -452,8 +454,8 @@ LineRenderer:
       serializedVersion: 2
       m_Curve:
       - serializedVersion: 3
-        time: 0.5200081
-        value: 0.025001526
+        time: 0.029624939
+        value: 0.04762268
         inSlope: 0
         outSlope: 0
         tangentMode: 0

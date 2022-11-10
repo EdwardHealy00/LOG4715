@@ -921,7 +921,6 @@ MonoBehaviour:
   m_ThrowSpeed: 0.5
   m_MaxPullDistance: 100
   m_PullDistanceDivider: 5
-  _ballPrefab: {fileID: 594227187}
 --- !u!1 &1214542969
 GameObject:
   m_ObjectHideFlags: 0
@@ -1269,6 +1268,75 @@ MonoBehaviour:
   m_SpinTurnLimit: 90
   m_TargetVelocityLowerLimit: 0
   m_SmoothTurnTime: 0
+--- !u!1001 &1756027564
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    m_TransformParent: {fileID: 0}
+    m_Modifications:
+    - target: {fileID: 5597885784065877107, guid: 27dd6ff617e34ae4ab013ea467b2cfc8,
+        type: 3}
+      propertyPath: m_RootOrder
+      value: 7
+      objectReference: {fileID: 0}
+    - target: {fileID: 5597885784065877107, guid: 27dd6ff617e34ae4ab013ea467b2cfc8,
+        type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5597885784065877107, guid: 27dd6ff617e34ae4ab013ea467b2cfc8,
+        type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5597885784065877107, guid: 27dd6ff617e34ae4ab013ea467b2cfc8,
+        type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5597885784065877107, guid: 27dd6ff617e34ae4ab013ea467b2cfc8,
+        type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 5597885784065877107, guid: 27dd6ff617e34ae4ab013ea467b2cfc8,
+        type: 3}
+      propertyPath: m_LocalRotation.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5597885784065877107, guid: 27dd6ff617e34ae4ab013ea467b2cfc8,
+        type: 3}
+      propertyPath: m_LocalRotation.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5597885784065877107, guid: 27dd6ff617e34ae4ab013ea467b2cfc8,
+        type: 3}
+      propertyPath: m_LocalRotation.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5597885784065877107, guid: 27dd6ff617e34ae4ab013ea467b2cfc8,
+        type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5597885784065877107, guid: 27dd6ff617e34ae4ab013ea467b2cfc8,
+        type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5597885784065877107, guid: 27dd6ff617e34ae4ab013ea467b2cfc8,
+        type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5597885784065877117, guid: 27dd6ff617e34ae4ab013ea467b2cfc8,
+        type: 3}
+      propertyPath: m_Name
+      value: CursorManager
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+  m_SourcePrefab: {fileID: 100100000, guid: 27dd6ff617e34ae4ab013ea467b2cfc8, type: 3}
 --- !u!1 &1836664234
 GameObject:
   m_ObjectHideFlags: 0

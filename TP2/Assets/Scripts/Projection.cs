@@ -1,69 +1,82 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 
-//Inspired by: https://github.com/Matthew-J-Spencer/Trajectory-Line-Unity 
+//Inspired by: https://github.com/llamacademy/projectile-trajectory/
 public class Projection : MonoBehaviour
 {
-    private LineRenderer m_line;
-    [SerializeField] private int m_MaxPhysicsFrameIterations = 100;
-    [SerializeField] private Transform _obstaclesParent;
+    private LineRenderer m_Line;
+    [Header("Trajectory Line Length")]
+    [SerializeField] private uint m_Length = 2;
+    private float m_TimeStep = 0.1f;
 
-    private Scene _simulationScene;
-    private PhysicsScene _physicsScene;
-    private readonly Dictionary<Transform, Transform> _spawnedObjects = new Dictionary<Transform, Transform>();
+    [Header("Trajectory Line Width")]
+    [SerializeField] private float m_MinWidth = 0.01f;
+    [SerializeField] private float m_MaxWidth = 0.1f;
 
-    private void Start()
+    [Header("Parent Object of All Obstacles")]
+    [SerializeField] private Transform m_ObstaclesParent;
+
+    [Header("GameObject Simulating the Trajectory")]
+    [SerializeField] private GameObject m_ballPrefab;
+
+    private LayerMask ObstacleLayerMask;
+
+    private void Awake()
     {
-        m_line = GetComponent<LineRenderer>();
-        CreatePhysicsScene();
+        m_Line = GetComponent<LineRenderer>();
+        m_Line.enabled = false;
+        ObstacleLayerMask = LayerMask.GetMask("Obstacle");
     }
 
-    private void CreatePhysicsScene()
+    public void DrawProjection(Vector3 pos, Vector3 velocity)
     {
-        _simulationScene = SceneManager.CreateScene("Simulation", new CreateSceneParameters(LocalPhysicsMode.Physics3D));
-        _physicsScene = _simulationScene.GetPhysicsScene();
-
-        foreach (Transform obj in _obstaclesParent)
+        m_Line.enabled = true;
+        m_Line.positionCount = Mathf.CeilToInt(m_Length / m_TimeStep) + 1;
+        Vector3 startPosition = pos;
+        Vector3 startVelocity = velocity;
+        int i = 0;
+        m_Line.SetPosition(i, startPosition);
+        for (float time = 0; time < m_Length; time += m_TimeStep)
         {
-            var ghostObj = Instantiate(obj.gameObject, obj.position, obj.rotation);
-            ghostObj.GetComponent<Renderer>().enabled = false;
-            SceneManager.MoveGameObjectToScene(ghostObj, _simulationScene);
-            if (!ghostObj.isStatic) _spawnedObjects.Add(obj, ghostObj.transform);
+            i++;
+            Vector3 point = startPosition + time * startVelocity;
+            point.y = startPosition.y + startVelocity.y * time + (Physics.gravity.y / 2f * time * time);
+
+            m_Line.SetPosition(i, point);
+
+            Vector3 lastPosition = m_Line.GetPosition(i - 1);
+
+            if (Physics.Raycast(lastPosition,
+                (point - lastPosition).normalized,
+                out RaycastHit hit,
+                (point - lastPosition).magnitude, ObstacleLayerMask) && hit.transform != transform)
+            {
+                m_Line.SetPosition(i, hit.point);
+                m_Line.positionCount = i + 1;
+                return;
+            }
         }
     }
 
-    private void Update()
-    {
-        foreach (var item in _spawnedObjects)
-        {
-            item.Value.position = item.Key.position;
-            item.Value.rotation = item.Key.rotation;
-        }
-    }
-
-    public void SimulateTrajectory(GameObject ballPrefab, Vector3 pos, Vector3 velocity)
-    {
-        var ghostObj = Instantiate(ballPrefab, pos, Quaternion.identity);
-        SceneManager.MoveGameObjectToScene(ghostObj.gameObject, _simulationScene);
-
-        ghostObj.GetComponent<Rigidbody>().AddForce(velocity, ForceMode.Impulse);
-
-        m_line.positionCount = m_MaxPhysicsFrameIterations;
-
-        for (var i = 0; i < m_MaxPhysicsFrameIterations; i++)
-        {
-            _physicsScene.Simulate(Time.fixedDeltaTime);
-            m_line.SetPosition(i, ghostObj.transform.position);
-        }
-
-        Destroy(ghostObj.gameObject);
-    }
-    
     public void EnableTrajectory(bool enable)
     {
-        m_line.positionCount = 0;
-        m_line.enabled = enable;
+        m_Line.positionCount = 0;
+        m_Line.enabled = enable;
     }
+
+    public void SetLineWidth(float width)
+    {
+        width = Mathf.Lerp(m_MinWidth, m_MaxWidth, width);
+        m_Line.startWidth = width;
+        m_Line.endWidth = width;
+    }
+
+    public void SetLineMaterial(Material material)
+    {
+        m_Line.material = material;
+    }
+
 }
