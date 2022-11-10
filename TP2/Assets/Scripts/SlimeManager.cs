@@ -41,8 +41,6 @@ public class SlimeManager : MonoBehaviour
     
     private float m_GroundedTimer = 0;
 
-
-
     void Awake()
     {
         Orbs = SlimeOrbsGenerator.GenerateOrbs(greenOrbsAtStart, yellowOrbsAtStart, blueOrbsAtStart, orangeOrbsAtStart, pinkOrbsAtStart);
@@ -125,7 +123,8 @@ public class SlimeManager : MonoBehaviour
         switch (CurrentColor)
         {
             case SlimeColor.Yellow:
-                if (SlingshotState == SlingshotState.Moving && (m_LastCollisionPoint - transform.position).magnitude > k_NonStickRadius)
+                if (!collisionInfo.transform.CompareTag("PinkWall") && !collisionInfo.transform.CompareTag("GreenWall") &&
+                    SlingshotState == SlingshotState.Moving && (m_LastCollisionPoint - transform.position).magnitude > k_NonStickRadius)
                 {
                     m_LastCollisionPoint = transform.position;
                     SlingshotState = SlingshotState.Idle;
@@ -149,6 +148,7 @@ public class SlimeManager : MonoBehaviour
         NextColor = selectedOrb;
         m_Projection.SetLineMaterial(Orbs[selectedOrb].Material);
         m_SphereCollider.material = Orbs[selectedOrb].PhysicMaterial;
+
         if (!Grounded)
         {
             if (fromInventory)
@@ -162,12 +162,24 @@ public class SlimeManager : MonoBehaviour
 
     public void ForceChangeColor(SlimeColor selectedOrb)
     {
-        Debug.Log("ForceChange");
         CurrentColor = selectedOrb;
         NextColor = selectedOrb;
         m_SkinnedMeshRenderer.material = Orbs[selectedOrb].Material;
         m_Projection.SetLineMaterial(Orbs[selectedOrb].Material);
         m_SphereCollider.material = Orbs[selectedOrb].PhysicMaterial;
+        // Check if inside of a wall specific trigger
+        Collider[] colliders = Physics.OverlapSphere(transform.position, 0.3f);
+        foreach (Collider collider in colliders)
+        {
+            if (collider.isTrigger)
+            {
+                if (selectedOrb == SlimeColor.Pink && (collider.transform.CompareTag("YellowWall") || collider.transform.CompareTag("GreenWall")))
+                {
+                    m_SphereCollider.material = Orbs[SlimeColor.Green].PhysicMaterial;
+                    break;
+                }
+            }
+        }
     }
 
     public bool CanUseColor(SlimeColor color)
@@ -179,13 +191,13 @@ public class SlimeManager : MonoBehaviour
     {
         if (CanUseColor(NextColor))
         {
-            Debug.Log("Consumed");
+            //Debug.Log("Consumed");
             Orbs[NextColor].Amount--;
             ForceChangeColor(NextColor);
         }
         else
         {
-            Debug.LogError("Can't use color");
+            //Debug.LogError("Can't use color");
         }
     }
 
@@ -197,7 +209,7 @@ public class SlimeManager : MonoBehaviour
             var orbs = new List<SlimeOrb>(Orbs.Values);
             if (orbs.All(x => x.Amount <= 0))
             {
-                Debug.Log("Game Over");
+                //Debug.Log("Game Over");
                 GameOver = true;
                 GameObject.Find("Gym Controls")?.transform.GetChild(0).gameObject.SetActive(true);
                 return;
@@ -205,6 +217,46 @@ public class SlimeManager : MonoBehaviour
 
             orbs.Sort((x, y) => x.Amount.CompareTo(y.Amount));
             ChangeColor(orbs[^1].slimeColor, false);
+        }
+    }
+
+    private void OnTriggerEnter(Collider other)
+    {
+        switch (CurrentColor)
+        {
+            case SlimeColor.Pink:
+                if (other.transform.CompareTag("YellowWall") || other.transform.CompareTag("GreenWall"))
+                {
+                    m_SphereCollider.material = Orbs[SlimeColor.Green].PhysicMaterial;
+                }
+                break;
+
+            case SlimeColor.Yellow:
+                if (other.transform.CompareTag("PinkWall") || other.transform.CompareTag("GreenWall"))
+                {
+                    m_SphereCollider.material = Orbs[SlimeColor.Green].PhysicMaterial;
+                }
+                break;
+
+            default:
+                break;
+        }
+    }
+
+    private void OnTriggerExit(Collider other)
+    {
+        switch (CurrentColor)
+        {
+            case SlimeColor.Pink:
+                m_SphereCollider.material = Orbs[SlimeColor.Pink].PhysicMaterial;
+                break;
+
+            case SlimeColor.Yellow:
+                m_SphereCollider.material = Orbs[SlimeColor.Yellow].PhysicMaterial;
+                break;
+
+            default:
+                break;
         }
     }
 }
