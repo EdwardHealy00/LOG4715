@@ -123,75 +123,6 @@ NavMeshSettings:
     debug:
       m_Flags: 0
   m_NavMeshData: {fileID: 0}
---- !u!1001 &278083336
-PrefabInstance:
-  m_ObjectHideFlags: 0
-  serializedVersion: 2
-  m_Modification:
-    m_TransformParent: {fileID: 0}
-    m_Modifications:
-    - target: {fileID: 5597885784065877107, guid: 27dd6ff617e34ae4ab013ea467b2cfc8,
-        type: 3}
-      propertyPath: m_RootOrder
-      value: 5
-      objectReference: {fileID: 0}
-    - target: {fileID: 5597885784065877107, guid: 27dd6ff617e34ae4ab013ea467b2cfc8,
-        type: 3}
-      propertyPath: m_LocalPosition.x
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 5597885784065877107, guid: 27dd6ff617e34ae4ab013ea467b2cfc8,
-        type: 3}
-      propertyPath: m_LocalPosition.y
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 5597885784065877107, guid: 27dd6ff617e34ae4ab013ea467b2cfc8,
-        type: 3}
-      propertyPath: m_LocalPosition.z
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 5597885784065877107, guid: 27dd6ff617e34ae4ab013ea467b2cfc8,
-        type: 3}
-      propertyPath: m_LocalRotation.w
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 5597885784065877107, guid: 27dd6ff617e34ae4ab013ea467b2cfc8,
-        type: 3}
-      propertyPath: m_LocalRotation.x
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 5597885784065877107, guid: 27dd6ff617e34ae4ab013ea467b2cfc8,
-        type: 3}
-      propertyPath: m_LocalRotation.y
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 5597885784065877107, guid: 27dd6ff617e34ae4ab013ea467b2cfc8,
-        type: 3}
-      propertyPath: m_LocalRotation.z
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 5597885784065877107, guid: 27dd6ff617e34ae4ab013ea467b2cfc8,
-        type: 3}
-      propertyPath: m_LocalEulerAnglesHint.x
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 5597885784065877107, guid: 27dd6ff617e34ae4ab013ea467b2cfc8,
-        type: 3}
-      propertyPath: m_LocalEulerAnglesHint.y
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 5597885784065877107, guid: 27dd6ff617e34ae4ab013ea467b2cfc8,
-        type: 3}
-      propertyPath: m_LocalEulerAnglesHint.z
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 5597885784065877117, guid: 27dd6ff617e34ae4ab013ea467b2cfc8,
-        type: 3}
-      propertyPath: m_Name
-      value: CursorManager
-      objectReference: {fileID: 0}
-    m_RemovedComponents: []
-  m_SourcePrefab: {fileID: 100100000, guid: 27dd6ff617e34ae4ab013ea467b2cfc8, type: 3}
 --- !u!1 &348434902
 GameObject:
   m_ObjectHideFlags: 0
@@ -766,7 +697,7 @@ MonoBehaviour:
     Slime Jaune'
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: aad2598ce85519a41b8f678e68f275c7, type: 2}
-  m_sharedMaterial: {fileID: 3819817382551098644, guid: aad2598ce85519a41b8f678e68f275c7,
+  m_sharedMaterial: {fileID: 4909800990148605271, guid: aad2598ce85519a41b8f678e68f275c7,
     type: 2}
   m_fontSharedMaterials: []
   m_fontMaterial: {fileID: 0}
@@ -1222,7 +1153,7 @@ MonoBehaviour:
     surface qu'il rencontre."
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 48fb4713329ba16438f53f6fe7e53024, type: 2}
-  m_sharedMaterial: {fileID: -1265486275974871991, guid: 48fb4713329ba16438f53f6fe7e53024,
+  m_sharedMaterial: {fileID: 9038243186946764719, guid: 48fb4713329ba16438f53f6fe7e53024,
     type: 2}
   m_fontSharedMaterials: []
   m_fontMaterial: {fileID: 0}

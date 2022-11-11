@@ -1837,10 +1837,16 @@ PrefabInstance:
     - target: {fileID: 1437124620130334918, guid: ef2255dc07aa1b44c826fc1051c6906c,
         type: 3}
       propertyPath: m_text
-      value: "Lancez le slime et observer que celui-ci rebondit sur les murs lorsqu'il
-        est rose.\n\nOn remarque aussi que le sol ne fait pas rebondir le slime pour
-        acc\xE9l\xE9rer le rythme du jeu."
+      value: "Lancez le slime rose et observez que celui-ci rebondit sur les murs.\n\nOn
+        remarque aussi que le sol ne fait pas rebondir le slime pour acc\xE9l\xE9rer
+        le rythme du jeu."
       objectReference: {fileID: 0}
+    - target: {fileID: 1437124620130334918, guid: ef2255dc07aa1b44c826fc1051c6906c,
+        type: 3}
+      propertyPath: m_sharedMaterial
+      value: 
+      objectReference: {fileID: 9038243186946764719, guid: 48fb4713329ba16438f53f6fe7e53024,
+        type: 2}
     - target: {fileID: 1437124620130334921, guid: ef2255dc07aa1b44c826fc1051c6906c,
         type: 3}
       propertyPath: m_AnchoredPosition.y

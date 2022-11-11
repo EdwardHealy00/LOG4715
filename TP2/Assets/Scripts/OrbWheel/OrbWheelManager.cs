@@ -4,7 +4,6 @@ using System.Collections.Generic;
 using TMPro;
 using UnityEngine;
 using UnityEngine.UI;
-using UnityEngine.Windows.Speech;
 
 public class OrbWheelManager : MonoBehaviour
 {
@@ -23,6 +22,7 @@ public class OrbWheelManager : MonoBehaviour
     private SlimeManager m_Slime;
     private Dictionary<SlimeColor, Animator> m_OrbAnimators;
     private Dictionary<SlimeColor, TMP_Text> m_OrbAmountLabels;
+    private Dictionary<SlimeColor, Button> m_OrbButtons;
     // Start is called before the first frame update
     void Start()
     {
@@ -55,6 +55,15 @@ public class OrbWheelManager : MonoBehaviour
             {SlimeColor.Blue, m_OrbWheel.transform.Find("PiercingBlueBtn").gameObject.GetComponentInChildren<TMP_Text>()},
             {SlimeColor.Pink, m_OrbWheel.transform.Find("BouncyPinkBtn").gameObject.GetComponentInChildren<TMP_Text>()}
         };
+        m_OrbButtons = new Dictionary<SlimeColor, Button>()
+        {
+            {SlimeColor.Green, m_OrbWheel.transform.Find("TypicalGreenBtn").gameObject.GetComponent<Button>()},
+            {SlimeColor.Yellow, m_OrbWheel.transform.Find("StickyYellowBtn").gameObject.GetComponent<Button>()},
+            {SlimeColor.Orange, m_OrbWheel.transform.Find("PiercingOrangeBtn").gameObject.GetComponent<Button>()},
+            {SlimeColor.Blue, m_OrbWheel.transform.Find("PiercingBlueBtn").gameObject.GetComponent<Button>()},
+            {SlimeColor.Pink, m_OrbWheel.transform.Find("BouncyPinkBtn").gameObject.GetComponent<Button>()}
+        };
+        m_SelectedOrbText.text = "";
     }
 
     // Update is called once per frame
@@ -72,8 +81,8 @@ public class OrbWheelManager : MonoBehaviour
             k_IsWheelOpened = false;
             StopSlowMotion();
             m_Anim.SetBool("ShowWheel", false);
-            
-            if(!m_Slime.Grounded && m_selectedOrb != m_Slime.CurrentColor) m_Slime.UseColor();
+            m_SelectedOrbText.text = "";
+            m_Slime.ChangeColor(m_selectedOrb, !m_Slime.Grounded);
         }
 
         if (k_IsWheelOpened)
@@ -85,7 +94,20 @@ public class OrbWheelManager : MonoBehaviour
         {
             ClearScreen();
         }
-        
+
+        foreach (var (slimeColor, button) in m_OrbButtons)
+        {
+            if (m_Slime.Orbs[slimeColor].Amount == 0)
+            {
+                button.interactable = false;
+            }
+            else
+            {
+                button.interactable = true;
+            }
+        }
+        m_OrbButtons[m_Slime.NextColor].interactable = false;
+
     }
 
     private void UpdateOrbAmountLabels()
@@ -106,11 +128,15 @@ public class OrbWheelManager : MonoBehaviour
         if (m_selectedOrb != selectedOrb)
         {
             if(m_selectedOrb != SlimeColor.None) m_OrbAnimators[m_selectedOrb].SetBool("Hovered", false);
-            m_OrbAnimators[selectedOrb].SetBool("Hovered", true);
-            m_SelectedOrbText.text = m_Slime.Orbs[selectedOrb].Name;
-            m_SelectedOrbText.color = m_Slime.Orbs[selectedOrb].Color;
-            m_Slime.ChangeColor(selectedOrb, false);
+            if (m_Slime.Orbs[selectedOrb].Amount > 0 && selectedOrb != m_Slime.NextColor)
+            {
+                m_OrbAnimators[selectedOrb].SetBool("Hovered", true);
+                m_SelectedOrbText.text = m_Slime.Orbs[selectedOrb].Name;
+                m_SelectedOrbText.color = m_Slime.Orbs[selectedOrb].Color;
+                
+            }
             m_selectedOrb = selectedOrb;
+
         }
     }   
 

@@ -216,7 +216,7 @@ MonoBehaviour:
   m_text: Reset Gym
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: aad2598ce85519a41b8f678e68f275c7, type: 2}
-  m_sharedMaterial: {fileID: 3819817382551098644, guid: aad2598ce85519a41b8f678e68f275c7,
+  m_sharedMaterial: {fileID: 4909800990148605271, guid: aad2598ce85519a41b8f678e68f275c7,
     type: 2}
   m_fontSharedMaterials: []
   m_fontMaterial: {fileID: 0}
