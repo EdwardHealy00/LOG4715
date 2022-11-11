@@ -1881,7 +1881,10 @@ MonoBehaviour:
     m_PersistentCalls:
       m_Calls: []
   m_text: "Entrer en contact avec un mur de couleur qui diff\xE8re de la couleur
-    du slime applique le comportement vert \xE0 la collision."
+    du slime applique le comportement vert \xE0 la collision.\n\nL'objectif est d'atteindre
+    les deux c\xF4t\xE9s de la platforme centrale en utilisant les murs de couleur.\n\nIl
+    est n\xE9cessaire d'utiliser la couleur jaune pour atteindre la partie gauche.\nIl
+    est aussi n\xE9cessaire d'utiliser la couleur rose pour atteindre la partie droite."
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 48fb4713329ba16438f53f6fe7e53024, type: 2}
   m_sharedMaterial: {fileID: -1265486275974871991, guid: 48fb4713329ba16438f53f6fe7e53024,
