@@ -4,30 +4,27 @@ using UnityEngine;
 
 public class SpikesLever : MonoBehaviour
 {
-    [SerializeField] private SpikesController spikes;
+    [SerializeField] private List<SpikesController> spikes;
+    private Animator anim;
 
-    private bool onLever = false;
-    private void OnTriggerEnter(Collider other)
+    private void Start()
     {
-        if (!onLever && other.CompareTag("Player"))
+        anim = GetComponentInChildren<Animator>();
+        anim.SetBool("LeverUp", true);
+    }
+    public void ActivateLever()
+    {
+        anim.SetBool("LeverUp", false);
+        foreach(SpikesController spike in spikes)
         {
-            onLever = true;
-            if (spikes.gameObject.activeInHierarchy)
+            if (spike.gameObject.activeInHierarchy)
             {
-                spikes.gameObject.SetActive(false);
+                spike.gameObject.SetActive(false);
             }
             else
             {
-                spikes.gameObject.SetActive(true);
+                spike.gameObject.SetActive(true);
             }
-        }
-    }
-
-    private void OnTriggerExit(Collider other)
-    {
-        if (other.CompareTag("Player"))
-        {
-            onLever = false;
         }
     }
 }

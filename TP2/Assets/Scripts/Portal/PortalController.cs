@@ -5,6 +5,7 @@ using UnityEngine;
 public class PortalController : MonoBehaviour
 {
     [SerializeField] private PortalController otherPortal;
+    [SerializeField] private SlimeColor portalColor;
     private GameObject player;
     private bool teleported = false;
 
@@ -15,7 +16,7 @@ public class PortalController : MonoBehaviour
 
     private void OnTriggerEnter(Collider other)
     {
-        if (!teleported)
+        if (!teleported && portalColor == player.GetComponent<SlimeManager>().CurrentColor)
         {
             otherPortal.teleported = true;
             player.transform.position = otherPortal.transform.position;
