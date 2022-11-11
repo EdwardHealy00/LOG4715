@@ -6,38 +6,25 @@ public class SpikesLever : MonoBehaviour
 {
     [SerializeField] private List<SpikesController> spikes;
     private Animator anim;
-    private bool onLever = false;
+
     private void Start()
     {
         anim = GetComponentInChildren<Animator>();
         anim.SetBool("LeverUp", true);
     }
-    private void OnTriggerEnter(Collider other)
+    public void ActivateLever()
     {
-        if (!onLever && other.CompareTag("Player"))
+        anim.SetBool("LeverUp", false);
+        foreach(SpikesController spike in spikes)
         {
-            anim.SetBool("LeverUp", false);
-            onLever = true;
-            foreach(SpikesController spike in spikes)
+            if (spike.gameObject.activeInHierarchy)
             {
-                if (spike.gameObject.activeInHierarchy)
-                {
-                    spike.gameObject.SetActive(false);
-                }
-                else
-                {
-                    spike.gameObject.SetActive(true);
-                }
+                spike.gameObject.SetActive(false);
             }
-        }
-    }
-
-    private void OnTriggerExit(Collider other)
-    {
-        if (other.CompareTag("Player"))
-        {
-            //anim.SetBool("LeverUp", true);
-            //onLever = false;
+            else
+            {
+                spike.gameObject.SetActive(true);
+            }
         }
     }
 }

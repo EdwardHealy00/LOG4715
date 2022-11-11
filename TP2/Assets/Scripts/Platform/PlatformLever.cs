@@ -7,29 +7,15 @@ public class PlatformLever : MonoBehaviour
     [SerializeField] private PlatformController platform;
     private Animator anim;
 
-    private bool onLever = false;
-
     private void Start()
     {
         anim = GetComponentInChildren<Animator>();
         anim.SetBool("LeverUp", true);
     }
-    private void OnTriggerEnter(Collider other)
+    public void ActivateLever()
     {
-        if(!onLever && other.CompareTag("Player"))
-        {
-            anim.SetBool("LeverUp", false);
-            onLever = true;
-            platform.TargetNextWaypoint();
-            platform.leverPressed = true;
-        }
-    }
-
-    private void OnTriggerExit(Collider other)
-    {
-        if (other.CompareTag("Player"))
-        {
-            //onLever = false;
-        }
+        anim.SetBool("LeverUp", false);
+        platform.TargetNextWaypoint();
+        platform.leverPressed = true;
     }
 }
